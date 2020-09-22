@@ -14,6 +14,7 @@ type PluginConfig = (
   | PluginRef<'gatsby-plugin-manifest'>
   | PluginRef<'gatsby-source-filesystem', FileSystemOptions>
   | PluginRef<'gatsby-plugin-typegen', TypegenPlugionOptions>
+  | PluginRef<'gatsby-source-graphql', object>
 );
 
 export const siteMetadata: GatsbyConfig['siteMetadata'] = {
@@ -55,4 +56,15 @@ export const plugins: Array<PluginConfig> = [
       icon: 'src/images/gatsby-icon.png',
     },
   },
+  {
+    resolve: "gatsby-source-graphql",
+    options: {
+      typeName: "Github",
+      fieldName: "github",
+      url: "https://api.github.com/graphql",
+      headers: {
+        Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+      },
+    }
+  }
 ];

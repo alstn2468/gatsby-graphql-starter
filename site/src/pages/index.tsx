@@ -1,26 +1,45 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import { graphql, Link, PageProps } from 'gatsby';
 
+import Repository from "../components/repository"
 import Layout from '../components/layout';
-import Image from '../components/image';
 
-const IndexPage: React.FC = () => {
+type IndexPageProps = PageProps<GatsbyTypes.RepositoryQuery>;
+
+const IndexPage: React.FC<IndexPageProps> = ({
+  data,
+}) => {
+  const { nodes } = data.github.viewer.pinnedItems;
+
   return (
     <Layout>
-      <h1>Hi people</h1>
-      <p>Welcome to your new Gatsby site.</p>
-      <p>Now go build something great.</p>
-      <div
-        style={{
-          maxWidth: '300px',
-          marginBottom: '1.45rem',
-        }}
-      >
-        <Image />
-      </div>
-      <Link to="/page-2/">Go to page 2</Link> <br />
+      {nodes?.map((node) => {
+        switch (node?.__typename) {
+          case 'Github_Repository':
+            return <Repository key={node.id} repository={node} />;
+          default:
+            return null;
+        }
+      })}
     </Layout>
   );
 };
 
 export default IndexPage;
+
+export const query = graphql`
+  query Repository {
+    github {
+      viewer {
+        pinnedItems(first: 4) {
+          nodes {
+            ...Repository_repository
+            ...on Github_Repository {
+              id
+            }
+          }
+        }
+      }
+    }
+  }
+`;
