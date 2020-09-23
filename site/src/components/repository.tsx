@@ -7,31 +7,40 @@ type RepositoryProps = {
 }
 
 const RepositoryContainer = styled.div({
-    width: 356,
-    height: 108,
-    padding: 10,
+    width: 444,
+    height: "auto",
+    padding: 16,
     boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
-    borderRadius: 5,
-    display: "inline-block",
-    margin: "17px 10px",
+    border: "1px solid #e1e4e8",
+    borderRadius: 6,
+    display: "flex",
+    flexDirection: "column",
+    gridAutoFlow: "row",
+    alignContent: "stretch",
 })
 
 const Title = styled.a({
     fontSize: 18,
     width: "100%",
     display: "inline-block",
+    color: "#0366d6",
+    fontWeight: 600,
+    textDecoration: "none",
 })
 
 const Description = styled.p({
-    fontSize: 16,
-    height: 40,
+    fontSize: 12,
     width: "100%",
-    display: "inline-block",
+    display: "block",
+    flex: "1 0 auto",
+    marginBottom: 16,
+    marginTop: 8,
 })
 
 const RepositoryFooter = styled.div({
     display: "flex",
     width: "100%",
+    color: "#586069",
 })
 
 const FooterElement = styled.span({
@@ -46,7 +55,7 @@ const Repository: React.FC<RepositoryProps> = ({
 }) => {
     return (
         <RepositoryContainer>
-            <Title>{repository.name}</Title>
+            <Title href={repository.url}>{repository.name}</Title>
             {repository.description
                 && <Description>{repository.description}</Description>}
             <RepositoryFooter>

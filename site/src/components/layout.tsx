@@ -20,12 +20,24 @@ const Layout: React.FC = ({ children }) => {
       <div
         style={{
           margin: '0 auto',
-          maxWidth: 960,
+          maxWidth: 1000,
           padding: '0 1.0875rem 1.45rem',
+          display: "block",
         }}
       >
-        <main>{children}</main>
-        <footer>
+        <main
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(2, 1fr)",
+            gap: "15px",
+          }}
+        >
+          {children}
+        </main>
+        <footer style={{
+          marginTop: 20,
+          textAlign: "center",
+        }}>
           © {new Date().getFullYear()}, Built with
           {' '}
           <a href="https://www.gatsbyjs.org">Gatsby</a>

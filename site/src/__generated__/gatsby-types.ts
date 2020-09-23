@@ -19440,10 +19440,19 @@ type Repository_repositoryFragment = (
   & { readonly primaryLanguage: Maybe<Pick<Github_Language, 'name'>>, readonly stargazers: Pick<Github_StargazerConnection, 'totalCount'> }
 );
 
+type Gist_gistFragment = (
+  Pick<Github_Gist, 'url'>
+  & { readonly files: Maybe<ReadonlyArray<Maybe<Pick<Github_GistFile, 'text' | 'name'>>>> }
+);
+
 type RepositoryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type RepositoryQuery = { readonly github: { readonly viewer: { readonly pinnedItems: { readonly nodes: Maybe<ReadonlyArray<Maybe<{ readonly __typename: 'Github_Gist' } | (
+type RepositoryQuery = { readonly github: { readonly viewer: { readonly pinnedItems: { readonly nodes: Maybe<ReadonlyArray<Maybe<(
+          { readonly __typename: 'Github_Gist' }
+          & Pick<Github_Gist, 'id'>
+          & Gist_gistFragment
+        ) | (
           { readonly __typename: 'Github_Repository' }
           & Pick<Github_Repository, 'id'>
           & Repository_repositoryFragment
@@ -19453,5 +19462,10 @@ type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type PagesQueryQuery = { readonly allSitePage: { readonly nodes: ReadonlyArray<Pick<SitePage, 'path'>> } };
+
+type LayoutQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type LayoutQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
 
 }

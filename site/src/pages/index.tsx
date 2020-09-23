@@ -3,6 +3,7 @@ import { graphql, Link, PageProps } from 'gatsby';
 
 import Repository from "../components/repository"
 import Layout from '../components/layout';
+import Gist from '../components/gist';
 
 type IndexPageProps = PageProps<GatsbyTypes.RepositoryQuery>;
 
@@ -17,6 +18,8 @@ const IndexPage: React.FC<IndexPageProps> = ({
         switch (node?.__typename) {
           case 'Github_Repository':
             return <Repository key={node.id} repository={node} />;
+          case 'Github_Gist':
+            return <Gist key={node.id} gist={node} />;
           default:
             return null;
         }
@@ -31,10 +34,14 @@ export const query = graphql`
   query Repository {
     github {
       viewer {
-        pinnedItems(first: 4) {
+        pinnedItems(first: 6) {
           nodes {
             ...Repository_repository
             ...on Github_Repository {
+              id
+            }
+            ...Gist_gist
+            ...on Github_Gist {
               id
             }
           }
