@@ -8,6 +8,7 @@ importers:
       gatsby-image: 2.4.16
       gatsby-plugin-manifest: 2.4.23_gatsby@2.24.47
       gatsby-plugin-pnpm: 1.2.5_gatsby@2.24.47
+      gatsby-plugin-react-svg: 3.0.0
       gatsby-plugin-sharp: 2.6.27_gatsby@2.24.47
       gatsby-plugin-typegen: 2.2.1_gatsby@2.24.47+react@16.13.1
       gatsby-source-filesystem: 2.3.24_gatsby@2.24.47
@@ -16,6 +17,7 @@ importers:
       react: 16.13.1
       react-dom: 16.13.1_react@16.13.1
       styled-components: 5.2.0_975908421a0f349b287d23c767f90c42
+      svg-react-loader: 0.4.6
     devDependencies:
       '@babel/core': 7.11.1
       '@babel/plugin-transform-typescript': 7.11.0_@babel+core@7.11.1
@@ -58,6 +60,7 @@ importers:
       gatsby-image: ^2.4.16
       gatsby-plugin-manifest: ^2.4.23
       gatsby-plugin-pnpm: ^1.2.5
+      gatsby-plugin-react-svg: ^3.0.0
       gatsby-plugin-sharp: ^2.6.27
       gatsby-plugin-typegen: ^2.2.1
       gatsby-source-filesystem: ^2.3.24
@@ -68,6 +71,7 @@ importers:
       react: ^16.13.1
       react-dom: ^16.13.1
       styled-components: ^5.2.0
+      svg-react-loader: ^0.4.6
       typescript: ^4.0.2
 lockfileVersion: 5.1
 packages:
@@ -4179,6 +4183,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-e3gwNZgDCnNWl0An0Tz6sUjKDV9m6aB+K9Xg//vYeo8+KiH8pWhLFxkawcXhm6FpM//GfD9IQv/kmvWCAVVpKA==
+  /big.js/3.2.0:
+    dev: false
+    resolution:
+      integrity: sha512-+hN/Zh2D08Mx65pZ/4g5bsmNiZUuChDiQfTUQ7qJr4/kuopCr88xZsAXv6mBoZEsUI4OuGHlX59qE94K2mMW8Q==
   /big.js/5.2.2:
     dev: false
     resolution:
@@ -5608,6 +5616,15 @@ packages:
     dev: true
     resolution:
       integrity: sha1-QuJ9T6BK4y+TGktNQZH6nN3ul8s=
+  /css/2.2.4:
+    dependencies:
+      inherits: 2.0.4
+      source-map: 0.6.1
+      source-map-resolve: 0.5.3
+      urix: 0.1.0
+    dev: false
+    resolution:
+      integrity: sha512-oUnjmWpy0niI3x/mPL8dVEI1l7MnG3+HHyRPHf+YFSbK+svOhXpmSOcDURUh2aOCgl2grzrOPt1nHLuCVFULLw==
   /css/3.0.0:
     dependencies:
       inherits: 2.0.4
@@ -6406,6 +6423,12 @@ packages:
     dev: false
     resolution:
       integrity: sha512-6p1NII1Vm62wni/VR/cUMauVQoxmLVb9csqQlvLz+hO2gk8U2UYDfXHQSUYIBKmZwAKz867IDqG7B+u0mj+M6w==
+  /emojis-list/2.1.0:
+    dev: false
+    engines:
+      node: '>= 0.10'
+    resolution:
+      integrity: sha1-TapNnbAPmBmIDHn6RXrlsJof04k=
   /emojis-list/3.0.0:
     dev: false
     engines:
@@ -7894,6 +7917,12 @@ packages:
       gatsby: ~2.x.x
     resolution:
       integrity: sha512-zGJUVApj641WTPiE0L4ZEFbt0iK8pEVIP0dtG5hPTRaTrb0zeZRp8Id9COf5sciwO0zGfT1/CmF6OyhV8KZr+g==
+  /gatsby-plugin-react-svg/3.0.0:
+    dependencies:
+      svg-react-loader: 0.4.6
+    dev: false
+    resolution:
+      integrity: sha512-myZl5NjVZwLLn4ovwSDM7cufa8yjaRiU5KoufJrz8FEalRroZ/hFSCCKNVna3blTwxcS0rZgISigYn9/xY7rkw==
   /gatsby-plugin-sharp/2.6.27_gatsby@2.24.47:
     dependencies:
       '@babel/runtime': 7.11.2
@@ -10734,6 +10763,11 @@ packages:
     dev: false
     resolution:
       integrity: sha512-c7/8mbUsKigAbLkD5B010BK4D9LZm7A1pNItkEwiUZRpIN66exu/e7YQWysGun+TRKaJp8MhemM+VkfWv42aCA==
+  /json5/0.5.1:
+    dev: false
+    hasBin: true
+    resolution:
+      integrity: sha1-Hq3nrMASA0rYTiOWdn6tn6VJWCE=
   /json5/1.0.1:
     dependencies:
       minimist: 1.2.5
@@ -10919,6 +10953,16 @@ packages:
       node: '>=4.3.0 <5.0.0 || >=5.10'
     resolution:
       integrity: sha512-Jsmr89RcXGIwivFY21FcRrisYZfvLMTWx5kOLc+JTxtpBOG6xML0vzbc6SEQG2FO9/4Fc3wW4LVcB5DmGflaRw==
+  /loader-utils/1.1.0:
+    dependencies:
+      big.js: 3.2.0
+      emojis-list: 2.1.0
+      json5: 0.5.1
+    dev: false
+    engines:
+      node: '>=4.0.0'
+    resolution:
+      integrity: sha1-yYrvSIvM7aL/teLeZG1qdUQp9c0=
   /loader-utils/1.4.0:
     dependencies:
       big.js: 5.2.2
@@ -13453,6 +13497,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-FIqgj2EUvTa7R50u0rGsyTftzjYmv/a3hO345bZNrqabNqjtgiDMgmo4mkUjd+nzU5oF3dClKqFIPUKybUyqoQ==
+  /ramda/0.21.0:
+    dev: false
+    resolution:
+      integrity: sha1-oAGr7bP/YQd9T/HVd9RN536NCjU=
   /randombytes/2.1.0:
     dependencies:
       safe-buffer: 5.2.1
@@ -14370,6 +14418,10 @@ packages:
     dev: false
     resolution:
       integrity: sha1-Cx4Rr4vESDbwSmQH6S2kJGe3lEQ=
+  /rx/4.1.0:
+    dev: false
+    resolution:
+      integrity: sha1-pfE/957zt0D+MKqAP7CfmIBdR4I=
   /rxjs/6.6.2:
     dependencies:
       tslib: 1.13.0
@@ -15462,6 +15514,17 @@ packages:
       node: '>=8'
     resolution:
       integrity: sha512-zoE5/e+dnEijk6ASB6/qrK+oYdm2do1hjoLWrqUC/8WEIW1gbxFcKuBof7sW8ArN6e+AYvsE8HBGiVRWL/F5CA==
+  /svg-react-loader/0.4.6:
+    dependencies:
+      css: 2.2.4
+      loader-utils: 1.1.0
+      ramda: 0.21.0
+      rx: 4.1.0
+      traverse: 0.6.6
+      xml2js: 0.4.17
+    dev: false
+    resolution:
+      integrity: sha512-HVEypjWQsQuJdBIPzXGxpmQsQts7QwfQuYgK1rah6BVCMoLNSCh/ESKVNd7/tHq8DkWYHHTyaUMDA1FjqZYrgA==
   /svg-tag-names/2.0.1:
     dev: false
     resolution:
@@ -15844,6 +15907,10 @@ packages:
       node: '>=8'
     resolution:
       integrity: sha512-3n1qG+/5kg+jrbTzwAykB5yRYtQCTqOGKq5U5PE3b0a1/mzo6snDhjGS0zJVJunO0NrT3Dg1MLy5TjWP/UJppg==
+  /traverse/0.6.6:
+    dev: false
+    resolution:
+      integrity: sha1-y99WD9e5r2MlAv7UD5GMFX6pcTc=
   /tree-kill/1.2.2:
     dev: false
     hasBin: true
@@ -16917,6 +16984,13 @@ packages:
     dev: false
     resolution:
       integrity: sha1-qQKekp09vN7RafPG4oI42VpdWig=
+  /xml2js/0.4.17:
+    dependencies:
+      sax: 1.2.4
+      xmlbuilder: 4.2.1
+    dev: false
+    resolution:
+      integrity: sha1-F76T6q4/O3eTWceVtBlwWogX6Gg=
   /xml2js/0.4.23:
     dependencies:
       sax: 1.2.4
@@ -16932,6 +17006,14 @@ packages:
       node: '>=4.0'
     resolution:
       integrity: sha512-fDlsI/kFEx7gLvbecc0/ohLG50fugQp8ryHzMTuW9vSa1GJ0XYWKnhsUx7oie3G98+r56aTQIUB4kht42R3JvA==
+  /xmlbuilder/4.2.1:
+    dependencies:
+      lodash: 4.17.20
+    dev: false
+    engines:
+      node: '>=0.8.0'
+    resolution:
+      integrity: sha1-qlijBBoGb5DqoWwvU4n/GfP0YaU=
   /xmlchars/2.2.0:
     dev: true
     resolution:

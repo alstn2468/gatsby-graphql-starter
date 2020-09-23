@@ -5221,6 +5221,8 @@ type Github_Gist = Github_Node & Github_Starrable & Github_UniformResourceLocata
   readonly pushedAt: Maybe<Scalars['Github_DateTime']>;
   /** The HTML path to this resource. */
   readonly resourcePath: Scalars['Github_URI'];
+  /** Returns a count of how many stargazers there are on this object */
+  readonly stargazerCount: Scalars['Int'];
   /** A list of users who have starred this starrable. */
   readonly stargazers: Github_StargazerConnection;
   /** Identifies the date and time when the object was last updated. */
@@ -5745,8 +5747,12 @@ type Github_Issue = Github_Node & Github_Assignable & Github_Closable & Github_C
   readonly body: Scalars['String'];
   /** The body rendered to HTML. */
   readonly bodyHTML: Scalars['Github_HTML'];
+  /** The http path for this issue body */
+  readonly bodyResourcePath: Scalars['Github_URI'];
   /** Identifies the body of the issue rendered to text. */
   readonly bodyText: Scalars['String'];
+  /** The http URL for this issue body */
+  readonly bodyUrl: Scalars['Github_URI'];
   /** `true` if the object is closed (definition of closed may depend on type) */
   readonly closed: Scalars['Boolean'];
   /** Identifies the date and time when the object was closed. */
@@ -5766,6 +5772,8 @@ type Github_Issue = Github_Node & Github_Assignable & Github_Closable & Github_C
   readonly id: Scalars['ID'];
   /** Check if this comment was edited and includes an edit with the creation data */
   readonly includesCreatedEdit: Scalars['Boolean'];
+  /** Is this issue read by the viewer */
+  readonly isReadByViewer: Maybe<Scalars['Boolean']>;
   /** A list of labels associated with the object. */
   readonly labels: Maybe<Github_LabelConnection>;
   /** The moment the editor made the last edit */
@@ -12872,6 +12880,8 @@ type Github_Repository = Github_Node & Github_ProjectOwner & Github_PackageOwner
   readonly isEmpty: Scalars['Boolean'];
   /** Identifies if the repository is a fork. */
   readonly isFork: Scalars['Boolean'];
+  /** Indicates if a repository is either owned by an organization, or is a private fork of an organization repository. */
+  readonly isInOrganization: Scalars['Boolean'];
   /** Indicates if the repository has been locked or not. */
   readonly isLocked: Scalars['Boolean'];
   /** Identifies if the repository is a mirror. */
@@ -12882,6 +12892,8 @@ type Github_Repository = Github_Node & Github_ProjectOwner & Github_PackageOwner
   readonly isSecurityPolicyEnabled: Maybe<Scalars['Boolean']>;
   /** Identifies if the repository is a template that can be used to generate new repositories. */
   readonly isTemplate: Scalars['Boolean'];
+  /** Is this repository a user configuration repository? */
+  readonly isUserConfigurationRepository: Scalars['Boolean'];
   /** Returns a single issue from the current repository by number. */
   readonly issue: Maybe<Github_Issue>;
   /** Returns a single issue-like object from the current repository by number. */
@@ -12962,6 +12974,8 @@ type Github_Repository = Github_Node & Github_ProjectOwner & Github_PackageOwner
   readonly squashMergeAllowed: Scalars['Boolean'];
   /** The SSH URL to clone this repository */
   readonly sshUrl: Scalars['Github_GitSSHRemote'];
+  /** Returns a count of how many stargazers there are on this object */
+  readonly stargazerCount: Scalars['Int'];
   /** A list of users who have starred this starrable. */
   readonly stargazers: Github_StargazerConnection;
   /**
@@ -13425,6 +13439,8 @@ type Github_RepositoryInfo = {
   readonly isArchived: Scalars['Boolean'];
   /** Identifies if the repository is a fork. */
   readonly isFork: Scalars['Boolean'];
+  /** Indicates if a repository is either owned by an organization, or is a private fork of an organization repository. */
+  readonly isInOrganization: Scalars['Boolean'];
   /** Indicates if the repository has been locked or not. */
   readonly isLocked: Scalars['Boolean'];
   /** Identifies if the repository is a mirror. */
@@ -13476,6 +13492,8 @@ type Github_RepositoryInvitation = Github_Node & {
   readonly invitee: Maybe<Github_User>;
   /** The user who created the invitation. */
   readonly inviter: Github_User;
+  /** The permalink for this repository invitation. */
+  readonly permalink: Scalars['Github_URI'];
   /**
    * The permission granted on this repository by this invitation.
    * 
@@ -13933,6 +13951,8 @@ type Github_ReviewDismissedEvent = Github_Node & Github_UniformResourceLocatable
 
 /** A request for a user to review a pull request. */
 type Github_ReviewRequest = Github_Node & {
+  /** Whether this request was created for a code owner */
+  readonly asCodeOwner: Scalars['Boolean'];
   /** Identifies the primary key from the database. */
   readonly databaseId: Maybe<Scalars['Int']>;
   readonly id: Scalars['ID'];
@@ -14618,6 +14638,8 @@ enum Github_StarOrderField {
 /** Things that can be starred. */
 type Github_Starrable = {
   readonly id: Scalars['ID'];
+  /** Returns a count of how many stargazers there are on this object */
+  readonly stargazerCount: Scalars['Int'];
   /** A list of users who have starred this starrable. */
   readonly stargazers: Github_StargazerConnection;
   /** Returns a boolean indicating whether the viewing user has starred this starrable. */
@@ -14659,6 +14681,8 @@ type Github_StarredRepositoryEdge = {
 
 /** Represents a commit status. */
 type Github_Status = Github_Node & {
+  /** A list of status contexts and check runs for this commit. */
+  readonly combinedContexts: Github_StatusCheckRollupContextConnection;
   /** The commit this status is attached to. */
   readonly commit: Maybe<Github_Commit>;
   /** Looks up an individual status context by context name. */
@@ -14668,6 +14692,15 @@ type Github_Status = Github_Node & {
   readonly id: Scalars['ID'];
   /** The combined commit status. */
   readonly state: Github_StatusState;
+};
+
+
+/** Represents a commit status. */
+type Github_Status_combinedContextsArgs = {
+  after: Maybe<Scalars['String']>;
+  before: Maybe<Scalars['String']>;
+  first: Maybe<Scalars['Int']>;
+  last: Maybe<Scalars['Int']>;
 };
 
 
@@ -15773,6 +15806,8 @@ type Github_Topic = Github_Node & Github_Starrable & {
    * first. Returns up to 10 Topics.
    */
   readonly relatedTopics: ReadonlyArray<Github_Topic>;
+  /** Returns a count of how many stargazers there are on this object */
+  readonly stargazerCount: Scalars['Int'];
   /** A list of users who have starred this starrable. */
   readonly stargazers: Github_StargazerConnection;
   /** Returns a boolean indicating whether the viewing user has starred this starrable. */
@@ -19435,6 +19470,11 @@ type StringQueryOperatorInput = {
   readonly glob: Maybe<Scalars['String']>;
 };
 
+type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type PagesQueryQuery = { readonly allSitePage: { readonly nodes: ReadonlyArray<Pick<SitePage, 'path'>> } };
+
 type Repository_repositoryFragment = (
   Pick<Github_Repository, 'name' | 'url' | 'description' | 'forkCount'>
   & { readonly primaryLanguage: Maybe<Pick<Github_Language, 'name'>>, readonly stargazers: Pick<Github_StargazerConnection, 'totalCount'> }
@@ -19457,15 +19497,5 @@ type RepositoryQuery = { readonly github: { readonly viewer: { readonly pinnedIt
           & Pick<Github_Repository, 'id'>
           & Repository_repositoryFragment
         )>>> } } } };
-
-type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type PagesQueryQuery = { readonly allSitePage: { readonly nodes: ReadonlyArray<Pick<SitePage, 'path'>> } };
-
-type LayoutQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type LayoutQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
 
 }

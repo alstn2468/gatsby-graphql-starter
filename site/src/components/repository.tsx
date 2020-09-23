@@ -1,27 +1,28 @@
 import { graphql } from "gatsby";
 import React from "react";
 import styled from "styled-components"
+import Star from "../images/star.svg"
+import Fork from "../images/fork.svg"
 
 type RepositoryProps = {
     repository: GatsbyTypes.Repository_repositoryFragment,
 }
 
 const RepositoryContainer = styled.div({
-    width: 444,
-    height: "auto",
     padding: 16,
     boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
     border: "1px solid #e1e4e8",
     borderRadius: 6,
+})
+
+const FlexContainer = styled.div({
     display: "flex",
     flexDirection: "column",
-    gridAutoFlow: "row",
-    alignContent: "stretch",
+    height: "100%",
 })
 
 const Title = styled.a({
     fontSize: 18,
-    width: "100%",
     display: "inline-block",
     color: "#0366d6",
     fontWeight: 600,
@@ -31,7 +32,6 @@ const Title = styled.a({
 const Description = styled.p({
     fontSize: 12,
     width: "100%",
-    display: "block",
     flex: "1 0 auto",
     marginBottom: 16,
     marginTop: 8,
@@ -40,13 +40,15 @@ const Description = styled.p({
 const RepositoryFooter = styled.div({
     display: "flex",
     width: "100%",
-    color: "#586069",
 })
 
 const FooterElement = styled.span({
     fontSize: 12,
-    "&:not(:last-child)": {
-        marginRight: 46,
+    color: "#586069",
+    verticalAlign: "middle",
+    lineHeight: 1.5,
+    "&:not(:first-child)": {
+        marginLeft: 16,
     }
 })
 
@@ -55,19 +57,34 @@ const Repository: React.FC<RepositoryProps> = ({
 }) => {
     return (
         <RepositoryContainer>
-            <Title href={repository.url}>{repository.name}</Title>
-            {repository.description
-                && <Description>{repository.description}</Description>}
-            <RepositoryFooter>
-                {repository.primaryLanguage
-                    && <FooterElement>{repository.primaryLanguage.name}</FooterElement>}
-                {repository.stargazers?.totalCount
-                    ? <FooterElement>STAR :{repository.stargazers.totalCount}</FooterElement>
-                    : null}
-                {repository.forkCount
-                    ? <FooterElement>FORK :{repository.forkCount}</FooterElement>
-                    : null}
-            </RepositoryFooter>
+            <FlexContainer>
+
+                <Title href={repository.url}>{repository.name}</Title>
+                {repository.description
+                    && <Description>{repository.description}</Description>}
+                <RepositoryFooter>
+                    {repository.primaryLanguage
+                        && <FooterElement>{repository.primaryLanguage.name}</FooterElement>}
+                    {repository.stargazers?.totalCount
+                        ? (
+                            <FooterElement>
+                                <Star style={{
+                                    verticalAlign: "text-bottom",
+                                }} />
+                            &nbsp;{repository.stargazers.totalCount}
+                            </FooterElement>
+                        )
+                        : null}
+                    {repository.forkCount
+                        ? (
+                            <FooterElement>
+                                <Fork style={{ verticalAlign: "text-bottom" }} />
+                            &nbsp;{repository.forkCount}
+                            </FooterElement>
+                        )
+                        : null}
+                </RepositoryFooter>
+            </FlexContainer>
         </RepositoryContainer>
     )
 }

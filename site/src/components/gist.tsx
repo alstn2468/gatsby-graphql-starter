@@ -7,20 +7,14 @@ type GistProps = {
 }
 
 const GistContainer = styled.div({
-    width: 444,
-    height: "auto",
     padding: 16,
     boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
     border: "1px solid #e1e4e8",
     borderRadius: 6,
-    display: "block",
-    gridAutoFlow: "row",
-    alignContent: "stretch",
 })
 
 const Title = styled.a({
     fontSize: 18,
-    width: "100%",
     display: "inline-block",
     color: "#0366d6",
     fontWeight: 600,
@@ -29,12 +23,20 @@ const Title = styled.a({
     textDecoration: "none",
 })
 
-const Text = styled.pre({
-    fontSize: 11,
+const Code = styled.code({
+    display: "inline-block",
     backgroundColor: "#f6f8fa",
+    overflowX: "auto",
     padding: "8px 16px",
+    width: "100%",
+    boxSizing: "border-box",
+})
+
+const Text = styled.pre({
+    width: "100%",
+    fontSize: 11,
     margin: 0,
-    fontFamily: "SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace",
+    fontFamily: "SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace"
 })
 
 const Gist: React.FC<GistProps> = ({
@@ -43,7 +45,9 @@ const Gist: React.FC<GistProps> = ({
     return (
         <GistContainer>
             <Title href={gist.url}>{gist.files[0].name}</Title>
-            <Text>{gist.files[0].text}</Text>
+            <Code>
+                <Text>{gist.files[0].text}</Text>
+            </Code>
         </GistContainer>
     )
 }

@@ -15,6 +15,7 @@ type PluginConfig = (
   | PluginRef<'gatsby-source-filesystem', FileSystemOptions>
   | PluginRef<'gatsby-plugin-typegen', TypegenPlugionOptions>
   | PluginRef<'gatsby-source-graphql', object>
+  | PluginRef<'gatsby-plugin-react-svg', object>
 );
 
 export const siteMetadata: GatsbyConfig['siteMetadata'] = {
@@ -65,6 +66,14 @@ export const plugins: Array<PluginConfig> = [
       headers: {
         Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
       },
+    }
+  },
+  {
+    resolve: 'gatsby-plugin-react-svg',
+    options: {
+      rule: {
+        include: /\.svg$/,
+      }
     }
   }
 ];

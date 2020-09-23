@@ -6486,6 +6486,9 @@ type Github_Gist implements Github_Node & Github_Starrable & Github_UniformResou
   # The HTML path to this resource.
   resourcePath: Github_URI!
 
+  # Returns a count of how many stargazers there are on this object
+  stargazerCount: Int!
+
   # A list of users who have starred this starrable.
   stargazers(
     # Returns the elements in the list that come after the specified cursor.
@@ -7130,8 +7133,14 @@ type Github_Issue implements Github_Node & Github_Assignable & Github_Closable &
   # The body rendered to HTML.
   bodyHTML: Github_HTML!
 
+  # The http path for this issue body
+  bodyResourcePath: Github_URI!
+
   # Identifies the body of the issue rendered to text.
   bodyText: String!
+
+  # The http URL for this issue body
+  bodyUrl: Github_URI!
 
   # `true` if the object is closed (definition of closed may depend on type)
   closed: Boolean!
@@ -7175,6 +7184,9 @@ type Github_Issue implements Github_Node & Github_Assignable & Github_Closable &
 
   # Check if this comment was edited and includes an edit with the creation data
   includesCreatedEdit: Boolean!
+
+  # Is this issue read by the viewer
+  isReadByViewer: Boolean
 
   # A list of labels associated with the object.
   labels(
@@ -16781,6 +16793,9 @@ type Github_Repository implements Github_Node & Github_ProjectOwner & Github_Pac
   # Identifies if the repository is a fork.
   isFork: Boolean!
 
+  # Indicates if a repository is either owned by an organization, or is a private fork of an organization repository.
+  isInOrganization: Boolean!
+
   # Indicates if the repository has been locked or not.
   isLocked: Boolean!
 
@@ -16795,6 +16810,9 @@ type Github_Repository implements Github_Node & Github_ProjectOwner & Github_Pac
 
   # Identifies if the repository is a template that can be used to generate new repositories.
   isTemplate: Boolean!
+
+  # Is this repository a user configuration repository?
+  isUserConfigurationRepository: Boolean!
 
   # Returns a single issue from the current repository by number.
   issue(
@@ -17166,6 +17184,9 @@ type Github_Repository implements Github_Node & Github_ProjectOwner & Github_Pac
   # The SSH URL to clone this repository
   sshUrl: Github_GitSSHRemote!
 
+  # Returns a count of how many stargazers there are on this object
+  stargazerCount: Int!
+
   # A list of users who have starred this starrable.
   stargazers(
     # Returns the elements in the list that come after the specified cursor.
@@ -17425,6 +17446,9 @@ interface Github_RepositoryInfo {
   # Identifies if the repository is a fork.
   isFork: Boolean!
 
+  # Indicates if a repository is either owned by an organization, or is a private fork of an organization repository.
+  isInOrganization: Boolean!
+
   # Indicates if the repository has been locked or not.
   isLocked: Boolean!
 
@@ -17491,6 +17515,9 @@ type Github_RepositoryInvitation implements Github_Node {
 
   # The user who created the invitation.
   inviter: Github_User!
+
+  # The permalink for this repository invitation.
+  permalink: Github_URI!
 
   # The permission granted on this repository by this invitation.
   #
@@ -18069,6 +18096,9 @@ type Github_ReviewDismissedEvent implements Github_Node & Github_UniformResource
 
 # A request for a user to review a pull request.
 type Github_ReviewRequest implements Github_Node {
+  # Whether this request was created for a code owner
+  asCodeOwner: Boolean!
+
   # Identifies the primary key from the database.
   databaseId: Int
   id: ID!
@@ -18913,6 +18943,9 @@ enum Github_StarOrderField {
 interface Github_Starrable {
   id: ID!
 
+  # Returns a count of how many stargazers there are on this object
+  stargazerCount: Int!
+
   # A list of users who have starred this starrable.
   stargazers(
     # Returns the elements in the list that come after the specified cursor.
@@ -18965,6 +18998,21 @@ type Github_StarredRepositoryEdge {
 
 # Represents a commit status.
 type Github_Status implements Github_Node {
+  # A list of status contexts and check runs for this commit.
+  combinedContexts(
+    # Returns the elements in the list that come after the specified cursor.
+    after: String
+
+    # Returns the elements in the list that come before the specified cursor.
+    before: String
+
+    # Returns the first _n_ elements from the list.
+    first: Int
+
+    # Returns the last _n_ elements from the list.
+    last: Int
+  ): Github_StatusCheckRollupContextConnection!
+
   # The commit this status is attached to.
   commit: Github_Commit
 
@@ -20452,6 +20500,9 @@ type Github_Topic implements Github_Node & Github_Starrable {
     # How many topics to return.
     first: Int = 3
   ): [Github_Topic!]!
+
+  # Returns a count of how many stargazers there are on this object
+  stargazerCount: Int!
 
   # A list of users who have starred this starrable.
   stargazers(

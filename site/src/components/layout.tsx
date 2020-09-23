@@ -2,6 +2,16 @@ import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 
 import Header from './header';
+import styled from 'styled-components';
+
+const Main = styled.main({
+  display: "grid",
+  gridTemplateColumns: "repeat(1, 1fr)",
+  "@media (min-width: 640px)": {
+    gridTemplateColumns: "repeat(2, 1fr)",
+  },
+  gap: "15px",
+});
 
 const Layout: React.FC = ({ children }) => {
   const data = useStaticQuery<GatsbyTypes.LayoutQuery>(graphql`
@@ -25,15 +35,9 @@ const Layout: React.FC = ({ children }) => {
           display: "block",
         }}
       >
-        <main
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(2, 1fr)",
-            gap: "15px",
-          }}
-        >
+        <Main>
           {children}
-        </main>
+        </Main>
         <footer style={{
           marginTop: 20,
           textAlign: "center",
