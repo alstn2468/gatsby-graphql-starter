@@ -19485,6 +19485,11 @@ type Gist_gistFragment = (
   & { readonly files: Maybe<ReadonlyArray<Maybe<Pick<Github_GistFile, 'text' | 'name'>>>> }
 );
 
+type Profile_userFragment = (
+  Pick<Github_User, 'bio' | 'avatarUrl' | 'company' | 'email' | 'name' | 'websiteUrl' | 'location'>
+  & { readonly followers: Pick<Github_FollowerConnection, 'totalCount'>, readonly following: Pick<Github_FollowingConnection, 'totalCount'>, readonly starredRepositories: Pick<Github_StarredRepositoryConnection, 'totalCount'> }
+);
+
 type RepositoryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -19496,6 +19501,6 @@ type RepositoryQuery = { readonly github: { readonly viewer: { readonly pinnedIt
           { readonly __typename: 'Github_Repository' }
           & Pick<Github_Repository, 'id'>
           & Repository_repositoryFragment
-        )>>> } } } };
+        )>>> } }, readonly user: Maybe<Profile_userFragment> } };
 
 }

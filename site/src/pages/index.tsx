@@ -12,6 +12,8 @@ const IndexPage: React.FC<IndexPageProps> = ({
 }) => {
   const { nodes } = data.github.viewer.pinnedItems;
 
+  console.log(data)
+
   return (
     <Layout>
       {nodes?.map((node) => {
@@ -46,6 +48,9 @@ export const query = graphql`
             }
           }
         }
+      }
+      user(login: "alstn2468") {
+          ...Profile_user
       }
     }
   }
