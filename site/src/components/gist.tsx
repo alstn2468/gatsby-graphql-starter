@@ -39,8 +39,20 @@ const Gist: React.FC<GistProps> = ({
 }) => {
     return (
         <GistContainer>
-            <Title href={gist.url}>{gist.files[0].name}</Title>
-            <Text>{gist.files[0].text}</Text>
+            {gist.files && gist.files[0]?.name
+                ? (
+                    <Title href={gist.url}>
+                        {gist.files[0].name}
+                    </Title>
+                )
+                : null}
+            {gist.files && gist.files[0]?.text
+                ? (
+                    <Text>
+                        {gist.files[0].text}
+                    </Text>
+                )
+                : null}
         </GistContainer>
     )
 }

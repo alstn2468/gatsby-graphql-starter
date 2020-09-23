@@ -58,7 +58,6 @@ const Repository: React.FC<RepositoryProps> = ({
     return (
         <RepositoryContainer>
             <FlexContainer>
-
                 <Title href={repository.url}>{repository.name}</Title>
                 {repository.description
                     && <Description>{repository.description}</Description>}

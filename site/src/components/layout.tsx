@@ -13,6 +13,11 @@ const Main = styled.main({
   gap: "15px",
 });
 
+const Footer = styled.footer({
+  marginTop: 20,
+  textAlign: "center",
+})
+
 const Layout: React.FC = ({ children }) => {
   const data = useStaticQuery<GatsbyTypes.LayoutQuery>(graphql`
     query Layout {
@@ -38,14 +43,11 @@ const Layout: React.FC = ({ children }) => {
         <Main>
           {children}
         </Main>
-        <footer style={{
-          marginTop: 20,
-          textAlign: "center",
-        }}>
+        <Footer>
           © {new Date().getFullYear()}, Built with
           {' '}
           <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
+        </Footer>
       </div>
     </>
   );
