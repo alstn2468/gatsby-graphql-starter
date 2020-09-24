@@ -1,27 +1,29 @@
 import React from 'react';
+import styled from "styled-components"
 import { Link } from 'gatsby';
 
 interface HeaderProps {
   siteTitle: string;
 }
 
+const HeaderContainer = styled.header({
+  background: 'black',
+  margin: "0 auto",
+  maxWidth: 1000,
+  padding: '1.45rem 1.0875rem',
+  boxSizing: "border-box",
+  borderRadius: 10,
+})
+
+const HeaderTitle = styled.h1({
+  margin: 0,
+})
+
 const Header: React.FC<HeaderProps> = ({
   siteTitle,
 }) => (
-  <header
-    style={{
-      background: 'rebeccapurple',
-      marginBottom: '1.45rem',
-    }}
-  >
-    <div
-      style={{
-        margin: '0 auto',
-        maxWidth: 960,
-        padding: '1.45rem 1.0875rem',
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
+    <HeaderContainer>
+      <HeaderTitle style={{ margin: 0 }}>
         <Link
           to="/"
           style={{
@@ -31,9 +33,8 @@ const Header: React.FC<HeaderProps> = ({
         >
           {siteTitle}
         </Link>
-      </h1>
-    </div>
-  </header>
-)
+      </HeaderTitle>
+    </HeaderContainer>
+  )
 
 export default Header;

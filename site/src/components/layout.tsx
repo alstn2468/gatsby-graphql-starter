@@ -5,12 +5,8 @@ import Header from './header';
 import styled from 'styled-components';
 
 const Main = styled.main({
-  display: "grid",
-  gridTemplateColumns: "repeat(1, 1fr)",
-  "@media (min-width: 640px)": {
-    gridTemplateColumns: "repeat(2, 1fr)",
-  },
-  gap: "15px",
+  display: "flex",
+  flexDirection: "column",
 });
 
 const Footer = styled.footer({

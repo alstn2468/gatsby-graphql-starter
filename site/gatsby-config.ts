@@ -19,8 +19,8 @@ type PluginConfig = (
 );
 
 export const siteMetadata: GatsbyConfig['siteMetadata'] = {
-  title: 'Gatsby TypeScript Workspace',
-  description: 'A minimal template with TypeScript & pnpm workspace',
+  title: 'Gatsby Github Profile',
+  description: 'Github profile clone coding with gatsby & graphql',
 };
 
 export const plugins: Array<PluginConfig> = [
