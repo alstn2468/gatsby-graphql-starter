@@ -29,6 +29,9 @@ const ProfileLeftContainer = styled.div({
     marginRight: 35,
 })
 
+const ProfileRightContainer = styled.div({
+})
+
 const Avatar = styled.img({
     width: 180,
     height: 180,
@@ -106,15 +109,14 @@ const Link = styled(LinkIcon)({
 const Profile: React.FC<ProfileProps> = ({
     user
 }) => {
-    console.log(user)
     return (
         <ProfileContainer>
             <ProfileLeftContainer>
                 <Avatar src={user.avatarUrl} />
             </ProfileLeftContainer>
-            <div>
+            <ProfileRightContainer>
                 <Username>{user.name}</Username>
-                <Bio>{user.bio}</Bio>
+                {user.bio && <Bio>{user.bio}</Bio>}
                 <TotalCountContainer>
                     <Follower />
                     <TotalCount>
@@ -131,23 +133,31 @@ const Profile: React.FC<ProfileProps> = ({
                     </TotalCount>
                 </TotalCountContainer>
                 <HorizontalBar />
-                <UserInfo>
-                    <Company />
-                    {user.company}
-                </UserInfo>
-                <UserInfo>
-                    <Location />
-                    {user.location}
-                </UserInfo>
-                <UserInfo>
-                    <Email />
-                    {user.email}
-                </UserInfo>
-                <UserInfo>
-                    <Link />
-                    {user.websiteUrl}
-                </UserInfo>
-            </div>
+                {user.company && (
+                    <UserInfo>
+                        <Company />
+                        {user.company}
+                    </UserInfo>
+                )}
+                {user.location && (
+                    <UserInfo>
+                        <Location />
+                        {user.location}
+                    </UserInfo>
+                )}
+                {user.email && (
+                    <UserInfo>
+                        <Email />
+                        {user.email}
+                    </UserInfo>
+                )}
+                {user.websiteUrl && (
+                    <UserInfo>
+                        <Link />
+                        {user.websiteUrl}
+                    </UserInfo>
+                )}
+            </ProfileRightContainer>
         </ProfileContainer>
     )
 }
