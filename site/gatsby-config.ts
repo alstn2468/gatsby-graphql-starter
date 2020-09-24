@@ -15,7 +15,7 @@ type PluginConfig = (
   | PluginRef<'gatsby-source-filesystem', FileSystemOptions>
   | PluginRef<'gatsby-plugin-typegen', TypegenPlugionOptions>
   | PluginRef<'gatsby-source-graphql', object>
-  | PluginRef<'gatsby-plugin-react-svg', object>
+  | PluginRef<'gatsby-plugin-svgr', object>
 );
 
 export const siteMetadata: GatsbyConfig['siteMetadata'] = {
@@ -69,11 +69,7 @@ export const plugins: Array<PluginConfig> = [
     }
   },
   {
-    resolve: 'gatsby-plugin-react-svg',
-    options: {
-      rule: {
-        include: /\.svg$/,
-      }
-    }
+    resolve: "gatsby-plugin-svgr",
+    options: {}
   }
 ];

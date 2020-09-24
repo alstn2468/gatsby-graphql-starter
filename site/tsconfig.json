@@ -14,7 +14,8 @@
     "jsx": "preserve"
   },
   "include": [
-    "src",
-    "gatsby-config.ts"
+    "./src/**/*",
+    "./typings/*",
+    "./gatsby-config.ts"
   ]
 }

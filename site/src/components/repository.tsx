@@ -1,8 +1,8 @@
 import { graphql } from "gatsby";
 import React from "react";
 import styled from "styled-components"
-import Star from "../images/star.svg"
-import Fork from "../images/fork.svg"
+import { ReactComponent as Star } from "./svgComponents/star.svg"
+import { ReactComponent as Fork } from "./svgComponents/fork.svg"
 
 type RepositoryProps = {
     repository: GatsbyTypes.Repository_repositoryFragment,

@@ -1,8 +1,8 @@
 import { graphql } from "gatsby";
 import React from "react";
 import styled from "styled-components"
-import Follwer from "../images/follwers.svg"
-import Star from "../images/star.svg"
+import { ReactComponent as FollowerIcon } from "./svgComponents/follower.svg"
+import { ReactComponent as StarIcon } from "./svgComponents/star.svg"
 
 type ProfileProps = {
     user: GatsbyTypes.Profile_userFragment
@@ -40,13 +40,26 @@ const TotalCountContainer = styled.div({
     fontSize: 12,
     alignItems: "flex-end",
     margin: "4px 0",
+    fontWeight: 600,
 })
 
 const TotalCount = styled.span({
     fontSize: 14,
     color: "#24292e",
-    margin: "0 4px",
+    marginRight: 4,
     lineHeight: 1,
+})
+
+const Seperator = styled.span({
+    margin: "0 5px",
+})
+
+const Star = styled(StarIcon)({
+    marginRight: 4,
+})
+
+const Follower = styled(FollowerIcon)({
+    marginRight: 4,
 })
 
 const Profile: React.FC<ProfileProps> = ({
@@ -59,13 +72,19 @@ const Profile: React.FC<ProfileProps> = ({
             <Username>{user.name}</Username>
             <Bio>{user.bio}</Bio>
             <TotalCountContainer>
-                <Follwer />
+                <Follower />
                 <TotalCount>
                     {user.followers.totalCount}
-                </TotalCount> followers ·
+                </TotalCount> followers
+                <Seperator>
+                    ·
+                </Seperator>
                 <TotalCount>
                     {user.following.totalCount}
-                </TotalCount> following ·
+                </TotalCount> following
+                <Seperator>
+                    ·
+                </Seperator>
                 <Star />
                 <TotalCount>
                     {user.starredRepositories.totalCount}
