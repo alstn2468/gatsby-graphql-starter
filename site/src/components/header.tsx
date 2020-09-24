@@ -17,6 +17,10 @@ const HeaderContainer = styled.header({
 
 const HeaderTitle = styled.h1({
   margin: 0,
+  fontSize: "1.5em",
+  "@media (min-width: 640px)": {
+    fontSize: "2em",
+  },
 })
 
 const Header: React.FC<HeaderProps> = ({

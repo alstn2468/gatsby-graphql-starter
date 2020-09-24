@@ -17,8 +17,13 @@ const ProfileContainer = styled.div({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    padding: "20px 0",
+    padding: "10px 0",
     margin: "5px 0",
+    flexDirection: "column",
+    "@media (min-width: 640px)": {
+        flexDirection: "row",
+        padding: "20px 0",
+    },
 })
 
 const ProfileLeftContainer = styled.div({
@@ -26,7 +31,10 @@ const ProfileLeftContainer = styled.div({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    marginRight: 35,
+    marginRight: 0,
+    "@media (min-width: 640px)": {
+        marginRight: 35,
+    },
 })
 
 const ProfileRightContainer = styled.div({
@@ -36,6 +44,10 @@ const Avatar = styled.img({
     width: 180,
     height: 180,
     borderRadius: "100%",
+    marginBottom: 10,
+    "@media (min-width: 640px)": {
+        margin: 0,
+    },
 })
 
 const Username = styled.p({

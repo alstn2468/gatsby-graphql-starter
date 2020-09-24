@@ -10,7 +10,7 @@ const Main = styled.main({
 });
 
 const Footer = styled.footer({
-  marginTop: 20,
+  marginTop: 25,
   textAlign: "center",
 })
 
