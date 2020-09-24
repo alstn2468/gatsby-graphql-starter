@@ -21,7 +21,7 @@ const IndexPage: React.FC<IndexPageProps> = ({
   data,
 }) => {
   const user = data.github.user;
-  const nodes = user?.pinnedItems.nodes;
+  const nodes = user?.pinnableItems.nodes;
 
   return (
     <Layout>
@@ -49,7 +49,7 @@ export const query = graphql`
     github {
       user(login: $login) {
         ...Profile_user
-        pinnedItems(first:6) {
+        pinnableItems(first:6) {
           nodes {
             ...Repository_repository
             ... on Github_Repository {

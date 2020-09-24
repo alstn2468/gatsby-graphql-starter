@@ -59,8 +59,9 @@ const Repository: React.FC<RepositoryProps> = ({
         <RepositoryContainer>
             <FlexContainer>
                 <Title href={repository.url}>{repository.name}</Title>
-                {repository.description
-                    && <Description>{repository.description}</Description>}
+                <Description>
+                    {repository.description ? repository.description : ""}
+                </Description>
                 <RepositoryFooter>
                     {repository.primaryLanguage
                         && <FooterElement>{repository.primaryLanguage.name}</FooterElement>}

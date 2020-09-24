@@ -19496,7 +19496,7 @@ type GithubProfileQueryVariables = Exact<{
 
 
 type GithubProfileQuery = { readonly github: { readonly user: Maybe<(
-      { readonly pinnedItems: { readonly nodes: Maybe<ReadonlyArray<Maybe<(
+      { readonly pinnableItems: { readonly nodes: Maybe<ReadonlyArray<Maybe<(
           { readonly __typename: 'Github_Gist' }
           & Pick<Github_Gist, 'id'>
           & Gist_gistFragment
