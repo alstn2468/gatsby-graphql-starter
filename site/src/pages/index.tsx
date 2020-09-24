@@ -1,13 +1,12 @@
 import React from 'react';
 import styled from "styled-components"
 import { graphql, PageProps } from 'gatsby';
-
 import Repository from "../components/repository"
-import Layout from '../components/layout';
 import Gist from '../components/gist';
+import Layout from '../components/layout';
 import Profile from '../components/profile';
 
-type IndexPageProps = PageProps<GatsbyTypes.RepositoryQuery>;
+type IndexPageProps = PageProps<GatsbyTypes.GithubProfileQuery>;
 
 const GridSection = styled.section({
   display: "grid",
@@ -21,8 +20,8 @@ const GridSection = styled.section({
 const IndexPage: React.FC<IndexPageProps> = ({
   data,
 }) => {
-  const { nodes } = data.github.viewer.pinnedItems;
-  const { user } = data.github;
+  const user = data.github.user;
+  const nodes = user?.pinnedItems.nodes;
 
   return (
     <Layout>
@@ -46,24 +45,22 @@ const IndexPage: React.FC<IndexPageProps> = ({
 export default IndexPage;
 
 export const query = graphql`
-  query Repository {
+  query GithubProfile($login: String = "alstn2468") {
     github {
-      viewer {
-        pinnedItems(first: 6) {
+      user(login: $login) {
+        ...Profile_user
+        pinnedItems(first:6) {
           nodes {
             ...Repository_repository
-            ...on Github_Repository {
+            ... on Github_Repository {
               id
             }
             ...Gist_gist
-            ...on Github_Gist {
+            ... on Github_Gist {
               id
             }
           }
         }
-      }
-      user(login: "alstn2468") {
-          ...Profile_user
       }
     }
   }
