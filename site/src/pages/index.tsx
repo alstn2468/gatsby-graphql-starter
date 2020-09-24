@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from "styled-components"
-import { graphql, Link, PageProps } from 'gatsby';
+import { graphql, PageProps } from 'gatsby';
 
 import Repository from "../components/repository"
 import Layout from '../components/layout';
