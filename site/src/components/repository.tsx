@@ -1,8 +1,8 @@
 import { graphql } from "gatsby";
 import React from "react";
 import styled from "styled-components"
-import { ReactComponent as Star } from "./svgComponents/star.svg"
-import { ReactComponent as Fork } from "./svgComponents/fork.svg"
+import { ReactComponent as StarIcon } from "./svgComponents/star.svg"
+import { ReactComponent as ForkIcon } from "./svgComponents/fork.svg"
 
 type RepositoryProps = {
     repository: GatsbyTypes.Repository_repositoryFragment,
@@ -52,6 +52,14 @@ const FooterElement = styled.span({
     }
 })
 
+const Star = styled(StarIcon)({
+    verticalAlign: "text-bottom",
+})
+
+const Fork = styled(ForkIcon)({
+    verticalAlign: "text-bottom",
+})
+
 const Repository: React.FC<RepositoryProps> = ({
     repository,
 }) => {
@@ -68,18 +76,16 @@ const Repository: React.FC<RepositoryProps> = ({
                     {repository.stargazers?.totalCount
                         ? (
                             <FooterElement>
-                                <Star style={{
-                                    verticalAlign: "text-bottom",
-                                }} />
-                            &nbsp;{repository.stargazers.totalCount}
+                                <Star />
+                                &nbsp;{repository.stargazers.totalCount}
                             </FooterElement>
                         )
                         : null}
                     {repository.forkCount
                         ? (
                             <FooterElement>
-                                <Fork style={{ verticalAlign: "text-bottom" }} />
-                            &nbsp;{repository.forkCount}
+                                <Fork />
+                                &nbsp;{repository.forkCount}
                             </FooterElement>
                         )
                         : null}
