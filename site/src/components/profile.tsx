@@ -37,17 +37,16 @@ const Bio = styled.p({
 const TotalCountContainer = styled.div({
     display: "flex",
     color: "#586069",
-    fontSize: 12,
+    fontSize: 14,
     alignItems: "flex-end",
     margin: "4px 0",
-    fontWeight: 600,
+    lineHeight: 1,
 })
 
 const TotalCount = styled.span({
-    fontSize: 14,
+    fontWeight: 600,
     color: "#24292e",
     marginRight: 4,
-    lineHeight: 1,
 })
 
 const Seperator = styled.span({
@@ -56,10 +55,12 @@ const Seperator = styled.span({
 
 const Star = styled(StarIcon)({
     marginRight: 4,
+    fill: "#586069",
 })
 
 const Follower = styled(FollowerIcon)({
     marginRight: 4,
+    fill: "#586069",
 })
 
 const Profile: React.FC<ProfileProps> = ({
