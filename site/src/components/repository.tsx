@@ -9,7 +9,7 @@ type RepositoryProps = {
 }
 
 const RepositoryContainer = styled.div({
-    padding: 16,
+    padding: "16px 16px 8px 16px",
     boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
     border: "1px solid #e1e4e8",
     borderRadius: 6,
