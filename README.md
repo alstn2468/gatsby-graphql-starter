@@ -1,4 +1,6 @@
-# gatsby-starter-typescript-workspace
+# Github Profile Clone with Gatsby & Typescript 
+
+bootstrapped by [gatsby-starter-typescript-workspace](https://github.com/devsisters/gatsby-starter-typescript-website)
 
 A minimal GatsbyJS starter with TypeScript & pnpm workspace
 
