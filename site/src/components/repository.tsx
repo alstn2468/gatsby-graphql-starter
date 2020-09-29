@@ -1,11 +1,16 @@
 import { graphql } from "gatsby";
 import React from "react";
-import styled from "styled-components"
-import { ReactComponent as StarIcon } from "./svgComponents/star.svg"
-import { ReactComponent as ForkIcon } from "./svgComponents/fork.svg"
+import styled from "styled-components";
+import { LANGUAGE_COLOR, OTHER_COLOR } from "../data/githubLanguageColors";
+import { ReactComponent as StarIcon } from "./svgComponents/star.svg";
+import { ReactComponent as ForkIcon } from "./svgComponents/fork.svg";
 
 type RepositoryProps = {
     repository: GatsbyTypes.Repository_repositoryFragment,
+}
+
+type LanguageColorProps = {
+    bgColor: string,
 }
 
 const RepositoryContainer = styled.div({
@@ -42,6 +47,17 @@ const RepositoryFooter = styled.div({
     width: "100%",
 })
 
+const LanguageColor = styled.span<LanguageColorProps>(props => ({
+    top: 1,
+    width: 12,
+    height: 12,
+    marginRight: 3,
+    borderRadius: "50%",
+    position: "relative",
+    display: "inline-block",
+    backgroundColor: props.bgColor,
+}));
+
 const FooterElement = styled.span({
     fontSize: 12,
     color: "#586069",
@@ -72,7 +88,13 @@ const Repository: React.FC<RepositoryProps> = ({
                 </Description>
                 <RepositoryFooter>
                     {repository.primaryLanguage
-                        && <FooterElement>{repository.primaryLanguage.name}</FooterElement>}
+                        && <FooterElement>
+                                <LanguageColor 
+                                    bgColor={
+                                        LANGUAGE_COLOR[repository.primaryLanguage.name] ?? OTHER_COLOR
+                                    } />
+                                {repository.primaryLanguage.name}
+                            </FooterElement>}
                     {repository.stargazers?.totalCount
                         ? (
                             <FooterElement>
