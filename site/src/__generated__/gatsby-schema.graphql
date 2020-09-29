@@ -966,6 +966,7 @@ type Github {
 
     # Select listings to which user has admin access. If omitted, listings visible to the
     # viewer are returned.
+    #
     viewerCanAdmin: Boolean
 
     # Select listings that can be administered by the specified user.
@@ -976,6 +977,7 @@ type Github {
 
     # Select listings visible to the viewer even if they are not approved. If omitted or
     # false, only approved listings will be returned.
+    #
     allStates: Boolean
 
     # Select the listings with these slugs, if they are visible to the viewer.
@@ -2081,6 +2083,452 @@ type Github_ChangeUserStatusPayload {
   status: Github_UserStatus
 }
 
+# A single check annotation.
+type Github_CheckAnnotation {
+  # The annotation's severity level.
+  annotationLevel: Github_CheckAnnotationLevel
+
+  # The path to the file that this annotation was made on.
+  blobUrl: Github_URI!
+
+  # Identifies the primary key from the database.
+  databaseId: Int
+
+  # The position of this annotation.
+  location: Github_CheckAnnotationSpan!
+
+  # The annotation's message.
+  message: String!
+
+  # The path that this annotation was made on.
+  path: String!
+
+  # Additional information about the annotation.
+  rawDetails: String
+
+  # The annotation's title
+  title: String
+}
+
+# The connection type for CheckAnnotation.
+type Github_CheckAnnotationConnection {
+  # A list of edges.
+  edges: [Github_CheckAnnotationEdge]
+
+  # A list of nodes.
+  nodes: [Github_CheckAnnotation]
+
+  # Information to aid in pagination.
+  pageInfo: Github_PageInfo!
+
+  # Identifies the total count of items in the connection.
+  totalCount: Int!
+}
+
+# Information from a check run analysis to specific lines of code.
+input Github_CheckAnnotationData {
+  # The path of the file to add an annotation to.
+  path: String!
+
+  # The location of the annotation
+  location: Github_CheckAnnotationRange!
+
+  # Represents an annotation's information level
+  annotationLevel: Github_CheckAnnotationLevel!
+
+  # A short description of the feedback for these lines of code.
+  message: String!
+
+  # The title that represents the annotation.
+  title: String
+
+  # Details about this annotation.
+  rawDetails: String
+}
+
+# An edge in a connection.
+type Github_CheckAnnotationEdge {
+  # A cursor for use in pagination.
+  cursor: String!
+
+  # The item at the end of the edge.
+  node: Github_CheckAnnotation
+}
+
+# Represents an annotation's information level.
+enum Github_CheckAnnotationLevel {
+  # An annotation indicating an inescapable error.
+  FAILURE
+
+  # An annotation indicating some information.
+  NOTICE
+
+  # An annotation indicating an ignorable error.
+  WARNING
+}
+
+# A character position in a check annotation.
+type Github_CheckAnnotationPosition {
+  # Column number (1 indexed).
+  column: Int
+
+  # Line number (1 indexed).
+  line: Int!
+}
+
+# Information from a check run analysis to specific lines of code.
+input Github_CheckAnnotationRange {
+  # The starting line of the range.
+  startLine: Int!
+
+  # The starting column of the range.
+  startColumn: Int
+
+  # The ending line of the range.
+  endLine: Int!
+
+  # The ending column of the range.
+  endColumn: Int
+}
+
+# An inclusive pair of positions for a check annotation.
+type Github_CheckAnnotationSpan {
+  # End position (inclusive).
+  end: Github_CheckAnnotationPosition!
+
+  # Start position (inclusive).
+  start: Github_CheckAnnotationPosition!
+}
+
+# The possible states for a check suite or run conclusion.
+enum Github_CheckConclusionState {
+  # The check suite or run requires action.
+  ACTION_REQUIRED
+
+  # The check suite or run has timed out.
+  TIMED_OUT
+
+  # The check suite or run has been cancelled.
+  CANCELLED
+
+  # The check suite or run has failed.
+  FAILURE
+
+  # The check suite or run has succeeded.
+  SUCCESS
+
+  # The check suite or run was neutral.
+  NEUTRAL
+
+  # The check suite or run was skipped.
+  SKIPPED
+
+  # The check suite or run was marked stale by GitHub. Only GitHub can use this conclusion.
+  STALE
+}
+
+# A check run.
+type Github_CheckRun implements Github_Node & Github_UniformResourceLocatable {
+  # The check run's annotations
+  annotations(
+    # Returns the elements in the list that come after the specified cursor.
+    after: String
+
+    # Returns the elements in the list that come before the specified cursor.
+    before: String
+
+    # Returns the first _n_ elements from the list.
+    first: Int
+
+    # Returns the last _n_ elements from the list.
+    last: Int
+  ): Github_CheckAnnotationConnection
+
+  # The check suite that this run is a part of.
+  checkSuite: Github_CheckSuite!
+
+  # Identifies the date and time when the check run was completed.
+  completedAt: Github_DateTime
+
+  # The conclusion of the check run.
+  conclusion: Github_CheckConclusionState
+
+  # Identifies the primary key from the database.
+  databaseId: Int
+
+  # The URL from which to find full details of the check run on the integrator's site.
+  detailsUrl: Github_URI
+
+  # A reference for the check run on the integrator's system.
+  externalId: String
+  id: ID!
+
+  # The name of the check for this check run.
+  name: String!
+
+  # The permalink to the check run summary.
+  permalink: Github_URI!
+
+  # The repository associated with this check run.
+  repository: Github_Repository!
+
+  # The HTTP path for this check run.
+  resourcePath: Github_URI!
+
+  # Identifies the date and time when the check run was started.
+  startedAt: Github_DateTime
+
+  # The current status of the check run.
+  status: Github_CheckStatusState!
+
+  # A string representing the check run's summary
+  summary: String
+
+  # A string representing the check run's text
+  text: String
+
+  # A string representing the check run
+  title: String
+
+  # The HTTP URL for this check run.
+  url: Github_URI!
+}
+
+# Possible further actions the integrator can perform.
+input Github_CheckRunAction {
+  # The text to be displayed on a button in the web UI.
+  label: String!
+
+  # A short explanation of what this action would do.
+  description: String!
+
+  # A reference for the action on the integrator's system. 
+  identifier: String!
+}
+
+# The connection type for CheckRun.
+type Github_CheckRunConnection {
+  # A list of edges.
+  edges: [Github_CheckRunEdge]
+
+  # A list of nodes.
+  nodes: [Github_CheckRun]
+
+  # Information to aid in pagination.
+  pageInfo: Github_PageInfo!
+
+  # Identifies the total count of items in the connection.
+  totalCount: Int!
+}
+
+# An edge in a connection.
+type Github_CheckRunEdge {
+  # A cursor for use in pagination.
+  cursor: String!
+
+  # The item at the end of the edge.
+  node: Github_CheckRun
+}
+
+# The filters that are available when fetching check runs.
+input Github_CheckRunFilter {
+  # Filters the check runs by this type.
+  checkType: Github_CheckRunType
+
+  # Filters the check runs created by this application ID.
+  appId: Int
+
+  # Filters the check runs by this name.
+  checkName: String
+
+  # Filters the check runs by this status.
+  status: Github_CheckStatusState
+}
+
+# Descriptive details about the check run.
+input Github_CheckRunOutput {
+  # A title to provide for this check run.
+  title: String!
+
+  # The summary of the check run (supports Commonmark).
+  summary: String!
+
+  # The details of the check run (supports Commonmark).
+  text: String
+
+  # The annotations that are made as part of the check run.
+  annotations: [Github_CheckAnnotationData!]
+
+  # Images attached to the check run output displayed in the GitHub pull request UI.
+  images: [Github_CheckRunOutputImage!]
+}
+
+# Images attached to the check run output displayed in the GitHub pull request UI.
+input Github_CheckRunOutputImage {
+  # The alternative text for the image.
+  alt: String!
+
+  # The full URL of the image.
+  imageUrl: Github_URI!
+
+  # A short image description.
+  caption: String
+}
+
+# The possible types of check runs.
+enum Github_CheckRunType {
+  # Every check run available.
+  ALL
+
+  # The latest check run.
+  LATEST
+}
+
+# The possible states for a check suite or run status.
+enum Github_CheckStatusState {
+  # The check suite or run has been queued.
+  QUEUED
+
+  # The check suite or run is in progress.
+  IN_PROGRESS
+
+  # The check suite or run has been completed.
+  COMPLETED
+
+  # The check suite or run has been requested.
+  REQUESTED
+}
+
+# A check suite.
+type Github_CheckSuite implements Github_Node {
+  # The GitHub App which created this check suite.
+  app: Github_App
+
+  # The name of the branch for this check suite.
+  branch: Github_Ref
+
+  # The check runs associated with a check suite.
+  checkRuns(
+    # Returns the elements in the list that come after the specified cursor.
+    after: String
+
+    # Returns the elements in the list that come before the specified cursor.
+    before: String
+
+    # Returns the first _n_ elements from the list.
+    first: Int
+
+    # Returns the last _n_ elements from the list.
+    last: Int
+
+    # Filters the check runs by this type.
+    filterBy: Github_CheckRunFilter
+  ): Github_CheckRunConnection
+
+  # The commit for this check suite
+  commit: Github_Commit!
+
+  # The conclusion of this check suite.
+  conclusion: Github_CheckConclusionState
+
+  # Identifies the date and time when the object was created.
+  createdAt: Github_DateTime!
+
+  # Identifies the primary key from the database.
+  databaseId: Int
+  id: ID!
+
+  # A list of open pull requests matching the check suite.
+  matchingPullRequests(
+    # A list of states to filter the pull requests by.
+    states: [Github_PullRequestState!]
+
+    # A list of label names to filter the pull requests by.
+    labels: [String!]
+
+    # The head ref name to filter the pull requests by.
+    headRefName: String
+
+    # The base ref name to filter the pull requests by.
+    baseRefName: String
+
+    # Ordering options for pull requests returned from the connection.
+    orderBy: Github_IssueOrder
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String
+
+    # Returns the elements in the list that come before the specified cursor.
+    before: String
+
+    # Returns the first _n_ elements from the list.
+    first: Int
+
+    # Returns the last _n_ elements from the list.
+    last: Int
+  ): Github_PullRequestConnection
+
+  # The push that triggered this check suite.
+  push: Github_Push
+
+  # The repository associated with this check suite.
+  repository: Github_Repository!
+
+  # The HTTP path for this check suite
+  resourcePath: Github_URI!
+
+  # The status of this check suite.
+  status: Github_CheckStatusState!
+
+  # Identifies the date and time when the object was last updated.
+  updatedAt: Github_DateTime!
+
+  # The HTTP URL for this check suite
+  url: Github_URI!
+}
+
+# The auto-trigger preferences that are available for check suites.
+input Github_CheckSuiteAutoTriggerPreference {
+  # The node ID of the application that owns the check suite.
+  appId: ID!
+
+  # Set to `true` to enable automatic creation of CheckSuite events upon pushes to the repository.
+  setting: Boolean!
+}
+
+# The connection type for CheckSuite.
+type Github_CheckSuiteConnection {
+  # A list of edges.
+  edges: [Github_CheckSuiteEdge]
+
+  # A list of nodes.
+  nodes: [Github_CheckSuite]
+
+  # Information to aid in pagination.
+  pageInfo: Github_PageInfo!
+
+  # Identifies the total count of items in the connection.
+  totalCount: Int!
+}
+
+# An edge in a connection.
+type Github_CheckSuiteEdge {
+  # A cursor for use in pagination.
+  cursor: String!
+
+  # The item at the end of the edge.
+  node: Github_CheckSuite
+}
+
+# The filters that are available when fetching check suites.
+input Github_CheckSuiteFilter {
+  # Filters the check suites created by this application ID.
+  appId: Int
+
+  # Filters the check suites by this name.
+  checkName: String
+}
+
 # Autogenerated input type of ClearLabelsFromLabelable
 input Github_ClearLabelsFromLabelableInput {
   # The id of the labelable object to clear the labels from.
@@ -2432,6 +2880,7 @@ type Github_Commit implements Github_Node & Github_GitObject & Github_Subscribab
 
   # The list of authors for this commit based on the git author and the Co-authored-by
   # message trailer. The git author will always be first.
+  #
   authors(
     # Returns the elements in the list that come after the specified cursor.
     after: String
@@ -2454,6 +2903,24 @@ type Github_Commit implements Github_Node & Github_GitObject & Github_Subscribab
 
   # The number of changed files in this commit.
   changedFiles: Int!
+
+  # The check suites associated with a commit.
+  checkSuites(
+    # Returns the elements in the list that come after the specified cursor.
+    after: String
+
+    # Returns the elements in the list that come before the specified cursor.
+    before: String
+
+    # Returns the first _n_ elements from the list.
+    first: Int
+
+    # Returns the last _n_ elements from the list.
+    last: Int
+
+    # Filters the check suites by this type.
+    filterBy: Github_CheckSuiteFilter
+  ): Github_CheckSuiteConnection
 
   # Comments made on the commit.
   comments(
@@ -2939,6 +3406,7 @@ interface Github_Contribution {
   # Whether this contribution is associated with a record you do not have access to. For
   # example, your own 'first issue' contribution may have been made on a repository you can no
   # longer access.
+  #
   isRestricted: Boolean!
 
   # When this contribution was made.
@@ -2951,6 +3419,7 @@ interface Github_Contribution {
   url: Github_URI!
 
   # The user who made this contribution.
+  #
   user: Github_User!
 }
 
@@ -3032,6 +3501,7 @@ type Github_ContributionsCollection {
   contributionYears: [Int!]!
 
   # Determine if this collection's time span ends in the current month.
+  #
   doesEndInCurrentMonth: Boolean!
 
   # The date of the first restricted contribution the user made in this time
@@ -3119,18 +3589,22 @@ type Github_ContributionsCollection {
 
   # When this collection's time range does not include any activity from the user, use this
   # to get a different collection from an earlier time range that does have activity.
+  #
   mostRecentCollectionWithActivity: Github_ContributionsCollection
 
   # Returns a different contributions collection from an earlier time range than this one
   # that does not have any contributions.
+  #
   mostRecentCollectionWithoutActivity: Github_ContributionsCollection
 
   # The issue the user opened on GitHub that received the most comments in the specified
   # time frame.
+  #
   popularIssueContribution: Github_CreatedIssueContribution
 
   # The pull request the user opened on GitHub that received the most comments in the
   # specified time frame.
+  #
   popularPullRequestContribution: Github_CreatedPullRequestContribution
 
   # Pull request contributions made by the user.
@@ -3398,6 +3872,75 @@ type Github_CreateBranchProtectionRulePayload {
   clientMutationId: String
 }
 
+# Autogenerated input type of CreateCheckRun
+input Github_CreateCheckRunInput {
+  # The node ID of the repository.
+  repositoryId: ID!
+
+  # The name of the check.
+  name: String!
+
+  # The SHA of the head commit.
+  headSha: Github_GitObjectID!
+
+  # The URL of the integrator's site that has the full details of the check.
+  detailsUrl: Github_URI
+
+  # A reference for the run on the integrator's system.
+  externalId: String
+
+  # The current status.
+  status: Github_RequestableCheckStatusState
+
+  # The time that the check run began.
+  startedAt: Github_DateTime
+
+  # The final conclusion of the check.
+  conclusion: Github_CheckConclusionState
+
+  # The time that the check run finished.
+  completedAt: Github_DateTime
+
+  # Descriptive details about the run.
+  output: Github_CheckRunOutput
+
+  # Possible further actions the integrator can perform, which a user may trigger.
+  actions: [Github_CheckRunAction!]
+
+  # A unique identifier for the client performing the mutation.
+  clientMutationId: String
+}
+
+# Autogenerated return type of CreateCheckRun
+type Github_CreateCheckRunPayload {
+  # The newly created check run.
+  checkRun: Github_CheckRun
+
+  # A unique identifier for the client performing the mutation.
+  clientMutationId: String
+}
+
+# Autogenerated input type of CreateCheckSuite
+input Github_CreateCheckSuiteInput {
+  # The Node ID of the repository.
+  repositoryId: ID!
+
+  # The SHA of the head commit.
+  headSha: Github_GitObjectID!
+
+  # A unique identifier for the client performing the mutation.
+  clientMutationId: String
+}
+
+# Autogenerated return type of CreateCheckSuite
+type Github_CreateCheckSuitePayload {
+  # The newly created check suite.
+  checkSuite: Github_CheckSuite
+
+  # A unique identifier for the client performing the mutation.
+  clientMutationId: String
+}
+
 # Represents the contribution a user made by committing to a repository.
 type Github_CreatedCommitContribution implements Github_Contribution {
   # How many commits were made on this day to this repository by the user.
@@ -3406,6 +3949,7 @@ type Github_CreatedCommitContribution implements Github_Contribution {
   # Whether this contribution is associated with a record you do not have access to. For
   # example, your own 'first issue' contribution may have been made on a repository you can no
   # longer access.
+  #
   isRestricted: Boolean!
 
   # When this contribution was made.
@@ -3421,6 +3965,7 @@ type Github_CreatedCommitContribution implements Github_Contribution {
   url: Github_URI!
 
   # The user who made this contribution.
+  #
   user: Github_User!
 }
 
@@ -3436,6 +3981,7 @@ type Github_CreatedCommitContributionConnection {
   pageInfo: Github_PageInfo!
 
   # Identifies the total count of commits across days and repositories in the connection.
+  #
   totalCount: Int!
 }
 
@@ -3453,6 +3999,7 @@ type Github_CreatedIssueContribution implements Github_Contribution {
   # Whether this contribution is associated with a record you do not have access to. For
   # example, your own 'first issue' contribution may have been made on a repository you can no
   # longer access.
+  #
   isRestricted: Boolean!
 
   # The issue that was opened.
@@ -3468,6 +4015,7 @@ type Github_CreatedIssueContribution implements Github_Contribution {
   url: Github_URI!
 
   # The user who made this contribution.
+  #
   user: Github_User!
 }
 
@@ -3503,6 +4051,7 @@ type Github_CreatedPullRequestContribution implements Github_Contribution {
   # Whether this contribution is associated with a record you do not have access to. For
   # example, your own 'first issue' contribution may have been made on a repository you can no
   # longer access.
+  #
   isRestricted: Boolean!
 
   # When this contribution was made.
@@ -3518,6 +4067,7 @@ type Github_CreatedPullRequestContribution implements Github_Contribution {
   url: Github_URI!
 
   # The user who made this contribution.
+  #
   user: Github_User!
 }
 
@@ -3553,6 +4103,7 @@ type Github_CreatedPullRequestReviewContribution implements Github_Contribution 
   # Whether this contribution is associated with a record you do not have access to. For
   # example, your own 'first issue' contribution may have been made on a repository you can no
   # longer access.
+  #
   isRestricted: Boolean!
 
   # When this contribution was made.
@@ -3574,6 +4125,7 @@ type Github_CreatedPullRequestReviewContribution implements Github_Contribution 
   url: Github_URI!
 
   # The user who made this contribution.
+  #
   user: Github_User!
 }
 
@@ -3606,6 +4158,7 @@ type Github_CreatedRepositoryContribution implements Github_Contribution {
   # Whether this contribution is associated with a record you do not have access to. For
   # example, your own 'first issue' contribution may have been made on a repository you can no
   # longer access.
+  #
   isRestricted: Boolean!
 
   # When this contribution was made.
@@ -3621,6 +4174,7 @@ type Github_CreatedRepositoryContribution implements Github_Contribution {
   url: Github_URI!
 
   # The user who made this contribution.
+  #
   user: Github_User!
 }
 
@@ -3788,10 +4342,12 @@ input Github_CreatePullRequestInput {
   # The name of the branch you want your changes pulled into. This should be an existing branch
   # on the current repository. You cannot update the base branch on a pull request to point
   # to another repository.
+  #
   baseRefName: String!
 
   # The name of the branch where your changes are implemented. For cross-repository pull requests
   # in the same network, namespace `head_ref_name` with a user like this: `username:branch`.
+  #
   headRefName: String!
 
   # The title of the pull request.
@@ -6487,6 +7043,7 @@ type Github_Gist implements Github_Node & Github_Starrable & Github_UniformResou
   resourcePath: Github_URI!
 
   # Returns a count of how many stargazers there are on this object
+  #
   stargazerCount: Int!
 
   # A list of users who have starred this starrable.
@@ -7422,6 +7979,7 @@ type Github_IssueComment implements Github_Node & Github_Comment & Github_Deleta
 
   # Returns the pull request associated with the comment, if this comment was made on a
   # pull request.
+  #
   pullRequest: Github_PullRequest
 
   # A list of reactions grouped by content left on the subject.
@@ -7805,6 +8363,7 @@ type Github_JoinedGitHubContribution implements Github_Contribution {
   # Whether this contribution is associated with a record you do not have access to. For
   # example, your own 'first issue' contribution may have been made on a repository you can no
   # longer access.
+  #
   isRestricted: Boolean!
 
   # When this contribution was made.
@@ -7817,6 +8376,7 @@ type Github_JoinedGitHubContribution implements Github_Contribution {
   url: Github_URI!
 
   # The user who made this contribution.
+  #
   user: Github_User!
 }
 
@@ -8411,6 +8971,7 @@ type Github_MarketplaceListing implements Github_Node {
 
   # Can the current viewer edit the primary and secondary category of this
   # Marketplace listing.
+  #
   viewerCanEditCategories: Boolean!
 
   # Can the current viewer edit the plans for this Marketplace listing.
@@ -8418,24 +8979,30 @@ type Github_MarketplaceListing implements Github_Node {
 
   # Can the current viewer return this Marketplace listing to draft state
   # so it becomes editable again.
+  #
   viewerCanRedraft: Boolean!
 
   # Can the current viewer reject this Marketplace listing by returning it to
   # an editable draft state or rejecting it entirely.
+  #
   viewerCanReject: Boolean!
 
   # Can the current viewer request this listing be reviewed for display in
   # the Marketplace as verified.
+  #
   viewerCanRequestApproval: Boolean!
 
   # Indicates whether the current user has an active subscription to this Marketplace listing.
+  #
   viewerHasPurchased: Boolean!
 
   # Indicates if the current user has purchased a subscription to this Marketplace listing
   # for all of the organizations the user owns.
+  #
   viewerHasPurchasedForAllOrganizations: Boolean!
 
   # Does the current viewer role allow them to administer this Marketplace listing.
+  #
   viewerIsListingAdmin: Boolean!
 }
 
@@ -12517,6 +13084,7 @@ type Github_ProjectCard implements Github_Node {
   # project column at a time. The column field will be null if the card is created
   # in a pending state and has yet to be associated with a column. Once cards are
   # associated with a column, they will not become pending in the future.
+  #
   column: Github_ProjectColumn
 
   # The card content item
@@ -14317,6 +14885,26 @@ enum Github_PullRequestUpdateState {
 
   # A pull request that has been closed without being merged.
   CLOSED
+}
+
+# A Git push.
+type Github_Push implements Github_Node {
+  id: ID!
+
+  # The SHA after the push
+  nextSha: Github_GitObjectID
+
+  # The permalink for this push.
+  permalink: Github_URI!
+
+  # The SHA before the push
+  previousSha: Github_GitObjectID
+
+  # The user who pushed
+  pusher: Github_User!
+
+  # The repository that was pushed to
+  repository: Github_Repository!
 }
 
 # A team, user or app who has the ability to push to a protected branch.
@@ -17185,6 +17773,7 @@ type Github_Repository implements Github_Node & Github_ProjectOwner & Github_Pac
   sshUrl: Github_GitSSHRemote!
 
   # Returns a count of how many stargazers there are on this object
+  #
   stargazerCount: Int!
 
   # A list of users who have starred this starrable.
@@ -17351,6 +17940,7 @@ type Github_RepositoryCollaboratorEdge {
   # **Upcoming Change on 2020-10-01 UTC**
   # **Description:** Type for `permission` will change from `RepositoryPermission!` to `String`.
   # **Reason:** This field may return additional values
+  #
   permission: Github_RepositoryPermission!
 
   # A list of sources for the user's access to the repository.
@@ -17524,6 +18114,7 @@ type Github_RepositoryInvitation implements Github_Node {
   # **Upcoming Change on 2020-10-01 UTC**
   # **Description:** Type for `permission` will change from `RepositoryPermission!` to `String`.
   # **Reason:** This field may return additional values
+  #
   permission: Github_RepositoryPermission!
 
   # The Repository the user is invited to.
@@ -17946,6 +18537,18 @@ type Github_RepositoryVulnerabilityAlertEdge {
   node: Github_RepositoryVulnerabilityAlert
 }
 
+# The possible states that can be requested when creating a check run.
+enum Github_RequestableCheckStatusState {
+  # The check suite or run has been queued.
+  QUEUED
+
+  # The check suite or run is in progress.
+  IN_PROGRESS
+
+  # The check suite or run has been completed.
+  COMPLETED
+}
+
 # Types that can be requested reviewers.
 union Github_RequestedReviewer = Github_Mannequin | Github_Team | Github_User
 
@@ -17982,6 +18585,27 @@ type Github_RequestReviewsPayload {
   requestedReviewersEdge: Github_UserEdge
 }
 
+# Autogenerated input type of RerequestCheckSuite
+input Github_RerequestCheckSuiteInput {
+  # The Node ID of the repository.
+  repositoryId: ID!
+
+  # The Node ID of the check suite.
+  checkSuiteId: ID!
+
+  # A unique identifier for the client performing the mutation.
+  clientMutationId: String
+}
+
+# Autogenerated return type of RerequestCheckSuite
+type Github_RerequestCheckSuitePayload {
+  # The requested check suite.
+  checkSuite: Github_CheckSuite
+
+  # A unique identifier for the client performing the mutation.
+  clientMutationId: String
+}
+
 # Autogenerated input type of ResolveReviewThread
 input Github_ResolveReviewThreadInput {
   # The ID of the thread to resolve
@@ -18005,6 +18629,7 @@ type Github_RestrictedContribution implements Github_Contribution {
   # Whether this contribution is associated with a record you do not have access to. For
   # example, your own 'first issue' contribution may have been made on a repository you can no
   # longer access.
+  #
   isRestricted: Boolean!
 
   # When this contribution was made.
@@ -18017,6 +18642,7 @@ type Github_RestrictedContribution implements Github_Contribution {
   url: Github_URI!
 
   # The user who made this contribution.
+  #
   user: Github_User!
 }
 
@@ -18168,6 +18794,7 @@ type Github_ReviewRequestRemovedEvent implements Github_Node {
 
 # A hovercard context with a message describing the current code review state of the pull
 # request.
+#
 type Github_ReviewStatusHovercardContext implements Github_HovercardContext {
   # A string describing this context
   message: String!
@@ -18538,6 +19165,7 @@ type Github_SecurityVulnerability {
   # + `< 0.1.11` denotes a version range up to, but excluding, the specified version
   # + `>= 4.3.0, < 4.3.5` denotes a version range with a known minimum and maximum version.
   # + `>= 0.0.1` denotes a version range with a known minimum, but no known maximum
+  #
   vulnerableVersionRange: String!
 }
 
@@ -18944,6 +19572,7 @@ interface Github_Starrable {
   id: ID!
 
   # Returns a count of how many stargazers there are on this object
+  #
   stargazerCount: Int!
 
   # A list of users who have starred this starrable.
@@ -19056,7 +19685,7 @@ type Github_StatusCheckRollup implements Github_Node {
 }
 
 # Types that can be inside a StatusCheckRollup context.
-union Github_StatusCheckRollupContext = Github_StatusContext
+union Github_StatusCheckRollupContext = Github_CheckRun | Github_StatusContext
 
 # The connection type for StatusCheckRollupContext.
 type Github_StatusCheckRollupContextConnection {
@@ -20421,6 +21050,7 @@ type Github_TeamRepositoryEdge {
   # **Upcoming Change on 2020-10-01 UTC**
   # **Description:** Type for `permission` will change from `RepositoryPermission!` to `String`.
   # **Reason:** This field may return additional values
+  #
   permission: Github_RepositoryPermission!
 }
 
@@ -20496,12 +21126,14 @@ type Github_Topic implements Github_Node & Github_Starrable {
 
   # A list of related topics, including aliases of this topic, sorted with the most relevant
   # first. Returns up to 10 Topics.
+  #
   relatedTopics(
     # How many topics to return.
     first: Int = 3
   ): [Github_Topic!]!
 
   # Returns a count of how many stargazers there are on this object
+  #
   stargazerCount: Int!
 
   # A list of users who have starred this starrable.
@@ -20998,6 +21630,75 @@ type Github_UpdateBranchProtectionRulePayload {
 
   # A unique identifier for the client performing the mutation.
   clientMutationId: String
+}
+
+# Autogenerated input type of UpdateCheckRun
+input Github_UpdateCheckRunInput {
+  # The node ID of the repository.
+  repositoryId: ID!
+
+  # The node of the check.
+  checkRunId: ID!
+
+  # The name of the check.
+  name: String
+
+  # The URL of the integrator's site that has the full details of the check.
+  detailsUrl: Github_URI
+
+  # A reference for the run on the integrator's system.
+  externalId: String
+
+  # The current status.
+  status: Github_RequestableCheckStatusState
+
+  # The time that the check run began.
+  startedAt: Github_DateTime
+
+  # The final conclusion of the check.
+  conclusion: Github_CheckConclusionState
+
+  # The time that the check run finished.
+  completedAt: Github_DateTime
+
+  # Descriptive details about the run.
+  output: Github_CheckRunOutput
+
+  # Possible further actions the integrator can perform, which a user may trigger.
+  actions: [Github_CheckRunAction!]
+
+  # A unique identifier for the client performing the mutation.
+  clientMutationId: String
+}
+
+# Autogenerated return type of UpdateCheckRun
+type Github_UpdateCheckRunPayload {
+  # The updated check run.
+  checkRun: Github_CheckRun
+
+  # A unique identifier for the client performing the mutation.
+  clientMutationId: String
+}
+
+# Autogenerated input type of UpdateCheckSuitePreferences
+input Github_UpdateCheckSuitePreferencesInput {
+  # The Node ID of the repository.
+  repositoryId: ID!
+
+  # The check suite preferences to modify.
+  autoTriggerPreferences: [Github_CheckSuiteAutoTriggerPreference!]!
+
+  # A unique identifier for the client performing the mutation.
+  clientMutationId: String
+}
+
+# Autogenerated return type of UpdateCheckSuitePreferences
+type Github_UpdateCheckSuitePreferencesPayload {
+  # A unique identifier for the client performing the mutation.
+  clientMutationId: String
+
+  # The updated repository.
+  repository: Github_Repository
 }
 
 # Autogenerated input type of UpdateEnterpriseActionExecutionCapabilitySetting
@@ -21620,6 +22321,7 @@ input Github_UpdatePullRequestInput {
 
   # The name of the branch you want your changes pulled into. This should be an existing branch
   # on the current repository.
+  #
   baseRefName: String
 
   # The title of the pull request.
@@ -22427,6 +23129,7 @@ type Github_User implements Github_Node & Github_Actor & Github_PackageOwner & G
   status: Github_UserStatus
 
   # Repositories the user has contributed to, ordered by contribution rank, plus repositories the user has created
+  #
   topRepositories(
     # Returns the elements in the list that come after the specified cursor.
     after: String
@@ -23359,7 +24062,7 @@ type Query {
   allDirectory(filter: DirectoryFilterInput, sort: DirectorySortInput, skip: Int, limit: Int): DirectoryConnection!
   sitePage(path: StringQueryOperatorInput, component: StringQueryOperatorInput, internalComponentName: StringQueryOperatorInput, componentChunkName: StringQueryOperatorInput, matchPath: StringQueryOperatorInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput, isCreatedByStatefulCreatePages: BooleanQueryOperatorInput, pluginCreator: SitePluginFilterInput, pluginCreatorId: StringQueryOperatorInput, componentPath: StringQueryOperatorInput): SitePage
   allSitePage(filter: SitePageFilterInput, sort: SitePageSortInput, skip: Int, limit: Int): SitePageConnection!
-  site(buildTime: DateQueryOperatorInput, siteMetadata: SiteSiteMetadataFilterInput, port: IntQueryOperatorInput, host: StringQueryOperatorInput, polyfill: BooleanQueryOperatorInput, pathPrefix: StringQueryOperatorInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): Site
+  site(buildTime: DateQueryOperatorInput, siteMetadata: SiteSiteMetadataFilterInput, polyfill: BooleanQueryOperatorInput, pathPrefix: StringQueryOperatorInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): Site
   allSite(filter: SiteFilterInput, sort: SiteSortInput, skip: Int, limit: Int): SiteConnection!
   imageSharp(fixed: ImageSharpFixedFilterInput, resolutions: ImageSharpResolutionsFilterInput, fluid: ImageSharpFluidFilterInput, sizes: ImageSharpSizesFilterInput, original: ImageSharpOriginalFilterInput, resize: ImageSharpResizeFilterInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): ImageSharp
   allImageSharp(filter: ImageSharpFilterInput, sort: ImageSharpSortInput, skip: Int, limit: Int): ImageSharpConnection!
@@ -23391,8 +24094,6 @@ type Site implements Node {
     locale: String
   ): Date
   siteMetadata: SiteSiteMetadata
-  port: Int
-  host: String
   polyfill: Boolean
   pathPrefix: String
   id: ID!
@@ -23571,8 +24272,6 @@ enum SiteFieldsEnum {
   buildTime
   siteMetadata___title
   siteMetadata___description
-  port
-  host
   polyfill
   pathPrefix
   id
@@ -23666,8 +24365,6 @@ enum SiteFieldsEnum {
 input SiteFilterInput {
   buildTime: DateQueryOperatorInput
   siteMetadata: SiteSiteMetadataFilterInput
-  port: IntQueryOperatorInput
-  host: StringQueryOperatorInput
   polyfill: BooleanQueryOperatorInput
   pathPrefix: StringQueryOperatorInput
   id: StringQueryOperatorInput
@@ -23870,6 +24567,7 @@ enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___fieldName
   pluginCreator___pluginOptions___url
   pluginCreator___pluginOptions___headers___Authorization
+  pluginCreator___pluginOptions___ssr
   pluginCreator___pluginOptions___pathCheck
   pluginCreator___nodeAPIs
   pluginCreator___browserAPIs
@@ -24065,6 +24763,7 @@ enum SitePluginFieldsEnum {
   pluginOptions___fieldName
   pluginOptions___url
   pluginOptions___headers___Authorization
+  pluginOptions___ssr
   pluginOptions___pathCheck
   nodeAPIs
   browserAPIs
@@ -24198,6 +24897,7 @@ type SitePluginPluginOptions {
   fieldName: String
   url: String
   headers: SitePluginPluginOptionsHeaders
+  ssr: Boolean
   pathCheck: Boolean
 }
 
@@ -24239,6 +24939,7 @@ input SitePluginPluginOptionsFilterInput {
   fieldName: StringQueryOperatorInput
   url: StringQueryOperatorInput
   headers: SitePluginPluginOptionsHeadersFilterInput
+  ssr: BooleanQueryOperatorInput
   pathCheck: BooleanQueryOperatorInput
 }
 

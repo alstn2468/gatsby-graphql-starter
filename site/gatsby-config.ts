@@ -16,6 +16,7 @@ type PluginConfig = (
   | PluginRef<'gatsby-plugin-typegen', TypegenPlugionOptions>
   | PluginRef<'gatsby-source-graphql', object>
   | PluginRef<'gatsby-plugin-svgr', object>
+  | PluginRef<'gatsby-plugin-styled-components', object>
 );
 
 export const siteMetadata: GatsbyConfig['siteMetadata'] = {
@@ -69,7 +70,10 @@ export const plugins: Array<PluginConfig> = [
     }
   },
   {
-    resolve: "gatsby-plugin-svgr",
-    options: {}
-  }
+    resolve: "gatsby-plugin-styled-components",
+    options: {
+      ssr: true
+    }
+  },
+  "gatsby-plugin-svgr"
 ];

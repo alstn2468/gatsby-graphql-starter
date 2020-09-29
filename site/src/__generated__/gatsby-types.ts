@@ -11,23 +11,14 @@ type Scalars = {
   Int: number;
   Float: number;
   Date: string;
-  /** An RFC 3986, RFC 3987, and RFC 6570 (level 4) compliant URI string. */
   Github_URI: any;
-  /** An ISO-8601 encoded UTC date string. */
   Github_DateTime: any;
-  /** A string containing HTML code. */
   Github_HTML: any;
-  /** A Git object ID. */
   Github_GitObjectID: any;
-  /** An ISO-8601 encoded date string. Unlike the DateTime type, GitTimestamp is not converted in UTC. */
   Github_GitTimestamp: any;
-  /** Git SSH string */
   Github_GitSSHRemote: any;
-  /** An ISO-8601 encoded date string. */
   Github_Date: any;
-  /** An ISO-8601 encoded UTC date string with millisecond precison. */
   Github_PreciseDateTime: any;
-  /** A valid x509 certificate string */
   Github_X509Certificate: any;
   JSON: never;
 };
@@ -1782,6 +1773,347 @@ type Github_ChangeUserStatusPayload = {
   readonly status: Maybe<Github_UserStatus>;
 };
 
+/** A single check annotation. */
+type Github_CheckAnnotation = {
+  /** The annotation's severity level. */
+  readonly annotationLevel: Maybe<Github_CheckAnnotationLevel>;
+  /** The path to the file that this annotation was made on. */
+  readonly blobUrl: Scalars['Github_URI'];
+  /** Identifies the primary key from the database. */
+  readonly databaseId: Maybe<Scalars['Int']>;
+  /** The position of this annotation. */
+  readonly location: Github_CheckAnnotationSpan;
+  /** The annotation's message. */
+  readonly message: Scalars['String'];
+  /** The path that this annotation was made on. */
+  readonly path: Scalars['String'];
+  /** Additional information about the annotation. */
+  readonly rawDetails: Maybe<Scalars['String']>;
+  /** The annotation's title */
+  readonly title: Maybe<Scalars['String']>;
+};
+
+/** The connection type for CheckAnnotation. */
+type Github_CheckAnnotationConnection = {
+  /** A list of edges. */
+  readonly edges: Maybe<ReadonlyArray<Maybe<Github_CheckAnnotationEdge>>>;
+  /** A list of nodes. */
+  readonly nodes: Maybe<ReadonlyArray<Maybe<Github_CheckAnnotation>>>;
+  /** Information to aid in pagination. */
+  readonly pageInfo: Github_PageInfo;
+  /** Identifies the total count of items in the connection. */
+  readonly totalCount: Scalars['Int'];
+};
+
+/** Information from a check run analysis to specific lines of code. */
+type Github_CheckAnnotationData = {
+  /** The path of the file to add an annotation to. */
+  readonly path: Scalars['String'];
+  /** The location of the annotation */
+  readonly location: Github_CheckAnnotationRange;
+  /** Represents an annotation's information level */
+  readonly annotationLevel: Github_CheckAnnotationLevel;
+  /** A short description of the feedback for these lines of code. */
+  readonly message: Scalars['String'];
+  /** The title that represents the annotation. */
+  readonly title: Maybe<Scalars['String']>;
+  /** Details about this annotation. */
+  readonly rawDetails: Maybe<Scalars['String']>;
+};
+
+/** An edge in a connection. */
+type Github_CheckAnnotationEdge = {
+  /** A cursor for use in pagination. */
+  readonly cursor: Scalars['String'];
+  /** The item at the end of the edge. */
+  readonly node: Maybe<Github_CheckAnnotation>;
+};
+
+/** Represents an annotation's information level. */
+enum Github_CheckAnnotationLevel {
+  /** An annotation indicating an inescapable error. */
+  FAILURE = 'FAILURE',
+  /** An annotation indicating some information. */
+  NOTICE = 'NOTICE',
+  /** An annotation indicating an ignorable error. */
+  WARNING = 'WARNING'
+}
+
+/** A character position in a check annotation. */
+type Github_CheckAnnotationPosition = {
+  /** Column number (1 indexed). */
+  readonly column: Maybe<Scalars['Int']>;
+  /** Line number (1 indexed). */
+  readonly line: Scalars['Int'];
+};
+
+/** Information from a check run analysis to specific lines of code. */
+type Github_CheckAnnotationRange = {
+  /** The starting line of the range. */
+  readonly startLine: Scalars['Int'];
+  /** The starting column of the range. */
+  readonly startColumn: Maybe<Scalars['Int']>;
+  /** The ending line of the range. */
+  readonly endLine: Scalars['Int'];
+  /** The ending column of the range. */
+  readonly endColumn: Maybe<Scalars['Int']>;
+};
+
+/** An inclusive pair of positions for a check annotation. */
+type Github_CheckAnnotationSpan = {
+  /** End position (inclusive). */
+  readonly end: Github_CheckAnnotationPosition;
+  /** Start position (inclusive). */
+  readonly start: Github_CheckAnnotationPosition;
+};
+
+/** The possible states for a check suite or run conclusion. */
+enum Github_CheckConclusionState {
+  /** The check suite or run requires action. */
+  ACTION_REQUIRED = 'ACTION_REQUIRED',
+  /** The check suite or run has timed out. */
+  TIMED_OUT = 'TIMED_OUT',
+  /** The check suite or run has been cancelled. */
+  CANCELLED = 'CANCELLED',
+  /** The check suite or run has failed. */
+  FAILURE = 'FAILURE',
+  /** The check suite or run has succeeded. */
+  SUCCESS = 'SUCCESS',
+  /** The check suite or run was neutral. */
+  NEUTRAL = 'NEUTRAL',
+  /** The check suite or run was skipped. */
+  SKIPPED = 'SKIPPED',
+  /** The check suite or run was marked stale by GitHub. Only GitHub can use this conclusion. */
+  STALE = 'STALE'
+}
+
+/** A check run. */
+type Github_CheckRun = Github_Node & Github_UniformResourceLocatable & {
+  /** The check run's annotations */
+  readonly annotations: Maybe<Github_CheckAnnotationConnection>;
+  /** The check suite that this run is a part of. */
+  readonly checkSuite: Github_CheckSuite;
+  /** Identifies the date and time when the check run was completed. */
+  readonly completedAt: Maybe<Scalars['Github_DateTime']>;
+  /** The conclusion of the check run. */
+  readonly conclusion: Maybe<Github_CheckConclusionState>;
+  /** Identifies the primary key from the database. */
+  readonly databaseId: Maybe<Scalars['Int']>;
+  /** The URL from which to find full details of the check run on the integrator's site. */
+  readonly detailsUrl: Maybe<Scalars['Github_URI']>;
+  /** A reference for the check run on the integrator's system. */
+  readonly externalId: Maybe<Scalars['String']>;
+  readonly id: Scalars['ID'];
+  /** The name of the check for this check run. */
+  readonly name: Scalars['String'];
+  /** The permalink to the check run summary. */
+  readonly permalink: Scalars['Github_URI'];
+  /** The repository associated with this check run. */
+  readonly repository: Github_Repository;
+  /** The HTTP path for this check run. */
+  readonly resourcePath: Scalars['Github_URI'];
+  /** Identifies the date and time when the check run was started. */
+  readonly startedAt: Maybe<Scalars['Github_DateTime']>;
+  /** The current status of the check run. */
+  readonly status: Github_CheckStatusState;
+  /** A string representing the check run's summary */
+  readonly summary: Maybe<Scalars['String']>;
+  /** A string representing the check run's text */
+  readonly text: Maybe<Scalars['String']>;
+  /** A string representing the check run */
+  readonly title: Maybe<Scalars['String']>;
+  /** The HTTP URL for this check run. */
+  readonly url: Scalars['Github_URI'];
+};
+
+
+/** A check run. */
+type Github_CheckRun_annotationsArgs = {
+  after: Maybe<Scalars['String']>;
+  before: Maybe<Scalars['String']>;
+  first: Maybe<Scalars['Int']>;
+  last: Maybe<Scalars['Int']>;
+};
+
+/** Possible further actions the integrator can perform. */
+type Github_CheckRunAction = {
+  /** The text to be displayed on a button in the web UI. */
+  readonly label: Scalars['String'];
+  /** A short explanation of what this action would do. */
+  readonly description: Scalars['String'];
+  /** A reference for the action on the integrator's system.  */
+  readonly identifier: Scalars['String'];
+};
+
+/** The connection type for CheckRun. */
+type Github_CheckRunConnection = {
+  /** A list of edges. */
+  readonly edges: Maybe<ReadonlyArray<Maybe<Github_CheckRunEdge>>>;
+  /** A list of nodes. */
+  readonly nodes: Maybe<ReadonlyArray<Maybe<Github_CheckRun>>>;
+  /** Information to aid in pagination. */
+  readonly pageInfo: Github_PageInfo;
+  /** Identifies the total count of items in the connection. */
+  readonly totalCount: Scalars['Int'];
+};
+
+/** An edge in a connection. */
+type Github_CheckRunEdge = {
+  /** A cursor for use in pagination. */
+  readonly cursor: Scalars['String'];
+  /** The item at the end of the edge. */
+  readonly node: Maybe<Github_CheckRun>;
+};
+
+/** The filters that are available when fetching check runs. */
+type Github_CheckRunFilter = {
+  /** Filters the check runs by this type. */
+  readonly checkType: Maybe<Github_CheckRunType>;
+  /** Filters the check runs created by this application ID. */
+  readonly appId: Maybe<Scalars['Int']>;
+  /** Filters the check runs by this name. */
+  readonly checkName: Maybe<Scalars['String']>;
+  /** Filters the check runs by this status. */
+  readonly status: Maybe<Github_CheckStatusState>;
+};
+
+/** Descriptive details about the check run. */
+type Github_CheckRunOutput = {
+  /** A title to provide for this check run. */
+  readonly title: Scalars['String'];
+  /** The summary of the check run (supports Commonmark). */
+  readonly summary: Scalars['String'];
+  /** The details of the check run (supports Commonmark). */
+  readonly text: Maybe<Scalars['String']>;
+  /** The annotations that are made as part of the check run. */
+  readonly annotations: Maybe<ReadonlyArray<Github_CheckAnnotationData>>;
+  /** Images attached to the check run output displayed in the GitHub pull request UI. */
+  readonly images: Maybe<ReadonlyArray<Github_CheckRunOutputImage>>;
+};
+
+/** Images attached to the check run output displayed in the GitHub pull request UI. */
+type Github_CheckRunOutputImage = {
+  /** The alternative text for the image. */
+  readonly alt: Scalars['String'];
+  /** The full URL of the image. */
+  readonly imageUrl: Scalars['Github_URI'];
+  /** A short image description. */
+  readonly caption: Maybe<Scalars['String']>;
+};
+
+/** The possible types of check runs. */
+enum Github_CheckRunType {
+  /** Every check run available. */
+  ALL = 'ALL',
+  /** The latest check run. */
+  LATEST = 'LATEST'
+}
+
+/** The possible states for a check suite or run status. */
+enum Github_CheckStatusState {
+  /** The check suite or run has been queued. */
+  QUEUED = 'QUEUED',
+  /** The check suite or run is in progress. */
+  IN_PROGRESS = 'IN_PROGRESS',
+  /** The check suite or run has been completed. */
+  COMPLETED = 'COMPLETED',
+  /** The check suite or run has been requested. */
+  REQUESTED = 'REQUESTED'
+}
+
+/** A check suite. */
+type Github_CheckSuite = Github_Node & {
+  /** The GitHub App which created this check suite. */
+  readonly app: Maybe<Github_App>;
+  /** The name of the branch for this check suite. */
+  readonly branch: Maybe<Github_Ref>;
+  /** The check runs associated with a check suite. */
+  readonly checkRuns: Maybe<Github_CheckRunConnection>;
+  /** The commit for this check suite */
+  readonly commit: Github_Commit;
+  /** The conclusion of this check suite. */
+  readonly conclusion: Maybe<Github_CheckConclusionState>;
+  /** Identifies the date and time when the object was created. */
+  readonly createdAt: Scalars['Github_DateTime'];
+  /** Identifies the primary key from the database. */
+  readonly databaseId: Maybe<Scalars['Int']>;
+  readonly id: Scalars['ID'];
+  /** A list of open pull requests matching the check suite. */
+  readonly matchingPullRequests: Maybe<Github_PullRequestConnection>;
+  /** The push that triggered this check suite. */
+  readonly push: Maybe<Github_Push>;
+  /** The repository associated with this check suite. */
+  readonly repository: Github_Repository;
+  /** The HTTP path for this check suite */
+  readonly resourcePath: Scalars['Github_URI'];
+  /** The status of this check suite. */
+  readonly status: Github_CheckStatusState;
+  /** Identifies the date and time when the object was last updated. */
+  readonly updatedAt: Scalars['Github_DateTime'];
+  /** The HTTP URL for this check suite */
+  readonly url: Scalars['Github_URI'];
+};
+
+
+/** A check suite. */
+type Github_CheckSuite_checkRunsArgs = {
+  after: Maybe<Scalars['String']>;
+  before: Maybe<Scalars['String']>;
+  first: Maybe<Scalars['Int']>;
+  last: Maybe<Scalars['Int']>;
+  filterBy: Maybe<Github_CheckRunFilter>;
+};
+
+
+/** A check suite. */
+type Github_CheckSuite_matchingPullRequestsArgs = {
+  states: Maybe<ReadonlyArray<Github_PullRequestState>>;
+  labels: Maybe<ReadonlyArray<Scalars['String']>>;
+  headRefName: Maybe<Scalars['String']>;
+  baseRefName: Maybe<Scalars['String']>;
+  orderBy: Maybe<Github_IssueOrder>;
+  after: Maybe<Scalars['String']>;
+  before: Maybe<Scalars['String']>;
+  first: Maybe<Scalars['Int']>;
+  last: Maybe<Scalars['Int']>;
+};
+
+/** The auto-trigger preferences that are available for check suites. */
+type Github_CheckSuiteAutoTriggerPreference = {
+  /** The node ID of the application that owns the check suite. */
+  readonly appId: Scalars['ID'];
+  /** Set to `true` to enable automatic creation of CheckSuite events upon pushes to the repository. */
+  readonly setting: Scalars['Boolean'];
+};
+
+/** The connection type for CheckSuite. */
+type Github_CheckSuiteConnection = {
+  /** A list of edges. */
+  readonly edges: Maybe<ReadonlyArray<Maybe<Github_CheckSuiteEdge>>>;
+  /** A list of nodes. */
+  readonly nodes: Maybe<ReadonlyArray<Maybe<Github_CheckSuite>>>;
+  /** Information to aid in pagination. */
+  readonly pageInfo: Github_PageInfo;
+  /** Identifies the total count of items in the connection. */
+  readonly totalCount: Scalars['Int'];
+};
+
+/** An edge in a connection. */
+type Github_CheckSuiteEdge = {
+  /** A cursor for use in pagination. */
+  readonly cursor: Scalars['String'];
+  /** The item at the end of the edge. */
+  readonly node: Maybe<Github_CheckSuite>;
+};
+
+/** The filters that are available when fetching check suites. */
+type Github_CheckSuiteFilter = {
+  /** Filters the check suites created by this application ID. */
+  readonly appId: Maybe<Scalars['Int']>;
+  /** Filters the check suites by this name. */
+  readonly checkName: Maybe<Scalars['String']>;
+};
+
 /** Autogenerated input type of ClearLabelsFromLabelable */
 type Github_ClearLabelsFromLabelableInput = {
   /** The id of the labelable object to clear the labels from. */
@@ -2056,6 +2388,8 @@ type Github_Commit = Github_Node & Github_GitObject & Github_Subscribable & Gith
   readonly blame: Github_Blame;
   /** The number of changed files in this commit. */
   readonly changedFiles: Scalars['Int'];
+  /** The check suites associated with a commit. */
+  readonly checkSuites: Maybe<Github_CheckSuiteConnection>;
   /** Comments made on the commit. */
   readonly comments: Github_CommitCommentConnection;
   /** The HTTP path for this Git object */
@@ -2154,6 +2488,16 @@ type Github_Commit_authorsArgs = {
 /** Represents a Git commit. */
 type Github_Commit_blameArgs = {
   path: Scalars['String'];
+};
+
+
+/** Represents a Git commit. */
+type Github_Commit_checkSuitesArgs = {
+  after: Maybe<Scalars['String']>;
+  before: Maybe<Scalars['String']>;
+  first: Maybe<Scalars['Int']>;
+  last: Maybe<Scalars['Int']>;
+  filterBy: Maybe<Github_CheckSuiteFilter>;
 };
 
 
@@ -2826,6 +3170,60 @@ type Github_CreateBranchProtectionRuleInput = {
 type Github_CreateBranchProtectionRulePayload = {
   /** The newly created BranchProtectionRule. */
   readonly branchProtectionRule: Maybe<Github_BranchProtectionRule>;
+  /** A unique identifier for the client performing the mutation. */
+  readonly clientMutationId: Maybe<Scalars['String']>;
+};
+
+/** Autogenerated input type of CreateCheckRun */
+type Github_CreateCheckRunInput = {
+  /** The node ID of the repository. */
+  readonly repositoryId: Scalars['ID'];
+  /** The name of the check. */
+  readonly name: Scalars['String'];
+  /** The SHA of the head commit. */
+  readonly headSha: Scalars['Github_GitObjectID'];
+  /** The URL of the integrator's site that has the full details of the check. */
+  readonly detailsUrl: Maybe<Scalars['Github_URI']>;
+  /** A reference for the run on the integrator's system. */
+  readonly externalId: Maybe<Scalars['String']>;
+  /** The current status. */
+  readonly status: Maybe<Github_RequestableCheckStatusState>;
+  /** The time that the check run began. */
+  readonly startedAt: Maybe<Scalars['Github_DateTime']>;
+  /** The final conclusion of the check. */
+  readonly conclusion: Maybe<Github_CheckConclusionState>;
+  /** The time that the check run finished. */
+  readonly completedAt: Maybe<Scalars['Github_DateTime']>;
+  /** Descriptive details about the run. */
+  readonly output: Maybe<Github_CheckRunOutput>;
+  /** Possible further actions the integrator can perform, which a user may trigger. */
+  readonly actions: Maybe<ReadonlyArray<Github_CheckRunAction>>;
+  /** A unique identifier for the client performing the mutation. */
+  readonly clientMutationId: Maybe<Scalars['String']>;
+};
+
+/** Autogenerated return type of CreateCheckRun */
+type Github_CreateCheckRunPayload = {
+  /** The newly created check run. */
+  readonly checkRun: Maybe<Github_CheckRun>;
+  /** A unique identifier for the client performing the mutation. */
+  readonly clientMutationId: Maybe<Scalars['String']>;
+};
+
+/** Autogenerated input type of CreateCheckSuite */
+type Github_CreateCheckSuiteInput = {
+  /** The Node ID of the repository. */
+  readonly repositoryId: Scalars['ID'];
+  /** The SHA of the head commit. */
+  readonly headSha: Scalars['Github_GitObjectID'];
+  /** A unique identifier for the client performing the mutation. */
+  readonly clientMutationId: Maybe<Scalars['String']>;
+};
+
+/** Autogenerated return type of CreateCheckSuite */
+type Github_CreateCheckSuitePayload = {
+  /** The newly created check suite. */
+  readonly checkSuite: Maybe<Github_CheckSuite>;
   /** A unique identifier for the client performing the mutation. */
   readonly clientMutationId: Maybe<Scalars['String']>;
 };
@@ -11131,6 +11529,21 @@ enum Github_PullRequestUpdateState {
   CLOSED = 'CLOSED'
 }
 
+/** A Git push. */
+type Github_Push = Github_Node & {
+  readonly id: Scalars['ID'];
+  /** The SHA after the push */
+  readonly nextSha: Maybe<Scalars['Github_GitObjectID']>;
+  /** The permalink for this push. */
+  readonly permalink: Scalars['Github_URI'];
+  /** The SHA before the push */
+  readonly previousSha: Maybe<Scalars['Github_GitObjectID']>;
+  /** The user who pushed */
+  readonly pusher: Github_User;
+  /** The repository that was pushed to */
+  readonly repository: Github_Repository;
+};
+
 /** A team, user or app who has the ability to push to a protected branch. */
 type Github_PushAllowance = Github_Node & {
   /** The actor that can push. */
@@ -13827,6 +14240,16 @@ type Github_RepositoryVulnerabilityAlertEdge = {
   readonly node: Maybe<Github_RepositoryVulnerabilityAlert>;
 };
 
+/** The possible states that can be requested when creating a check run. */
+enum Github_RequestableCheckStatusState {
+  /** The check suite or run has been queued. */
+  QUEUED = 'QUEUED',
+  /** The check suite or run is in progress. */
+  IN_PROGRESS = 'IN_PROGRESS',
+  /** The check suite or run has been completed. */
+  COMPLETED = 'COMPLETED'
+}
+
 /** Types that can be requested reviewers. */
 type Github_RequestedReviewer = Github_Mannequin | Github_Team | Github_User;
 
@@ -13854,6 +14277,24 @@ type Github_RequestReviewsPayload = {
   readonly pullRequest: Maybe<Github_PullRequest>;
   /** The edge from the pull request to the requested reviewers. */
   readonly requestedReviewersEdge: Maybe<Github_UserEdge>;
+};
+
+/** Autogenerated input type of RerequestCheckSuite */
+type Github_RerequestCheckSuiteInput = {
+  /** The Node ID of the repository. */
+  readonly repositoryId: Scalars['ID'];
+  /** The Node ID of the check suite. */
+  readonly checkSuiteId: Scalars['ID'];
+  /** A unique identifier for the client performing the mutation. */
+  readonly clientMutationId: Maybe<Scalars['String']>;
+};
+
+/** Autogenerated return type of RerequestCheckSuite */
+type Github_RerequestCheckSuitePayload = {
+  /** The requested check suite. */
+  readonly checkSuite: Maybe<Github_CheckSuite>;
+  /** A unique identifier for the client performing the mutation. */
+  readonly clientMutationId: Maybe<Scalars['String']>;
 };
 
 /** Autogenerated input type of ResolveReviewThread */
@@ -14730,7 +15171,7 @@ type Github_StatusCheckRollup_contextsArgs = {
 };
 
 /** Types that can be inside a StatusCheckRollup context. */
-type Github_StatusCheckRollupContext = Github_StatusContext;
+type Github_StatusCheckRollupContext = Github_CheckRun | Github_StatusContext;
 
 /** The connection type for StatusCheckRollupContext. */
 type Github_StatusCheckRollupContextConnection = {
@@ -16222,6 +16663,60 @@ type Github_UpdateBranchProtectionRulePayload = {
   readonly branchProtectionRule: Maybe<Github_BranchProtectionRule>;
   /** A unique identifier for the client performing the mutation. */
   readonly clientMutationId: Maybe<Scalars['String']>;
+};
+
+/** Autogenerated input type of UpdateCheckRun */
+type Github_UpdateCheckRunInput = {
+  /** The node ID of the repository. */
+  readonly repositoryId: Scalars['ID'];
+  /** The node of the check. */
+  readonly checkRunId: Scalars['ID'];
+  /** The name of the check. */
+  readonly name: Maybe<Scalars['String']>;
+  /** The URL of the integrator's site that has the full details of the check. */
+  readonly detailsUrl: Maybe<Scalars['Github_URI']>;
+  /** A reference for the run on the integrator's system. */
+  readonly externalId: Maybe<Scalars['String']>;
+  /** The current status. */
+  readonly status: Maybe<Github_RequestableCheckStatusState>;
+  /** The time that the check run began. */
+  readonly startedAt: Maybe<Scalars['Github_DateTime']>;
+  /** The final conclusion of the check. */
+  readonly conclusion: Maybe<Github_CheckConclusionState>;
+  /** The time that the check run finished. */
+  readonly completedAt: Maybe<Scalars['Github_DateTime']>;
+  /** Descriptive details about the run. */
+  readonly output: Maybe<Github_CheckRunOutput>;
+  /** Possible further actions the integrator can perform, which a user may trigger. */
+  readonly actions: Maybe<ReadonlyArray<Github_CheckRunAction>>;
+  /** A unique identifier for the client performing the mutation. */
+  readonly clientMutationId: Maybe<Scalars['String']>;
+};
+
+/** Autogenerated return type of UpdateCheckRun */
+type Github_UpdateCheckRunPayload = {
+  /** The updated check run. */
+  readonly checkRun: Maybe<Github_CheckRun>;
+  /** A unique identifier for the client performing the mutation. */
+  readonly clientMutationId: Maybe<Scalars['String']>;
+};
+
+/** Autogenerated input type of UpdateCheckSuitePreferences */
+type Github_UpdateCheckSuitePreferencesInput = {
+  /** The Node ID of the repository. */
+  readonly repositoryId: Scalars['ID'];
+  /** The check suite preferences to modify. */
+  readonly autoTriggerPreferences: ReadonlyArray<Github_CheckSuiteAutoTriggerPreference>;
+  /** A unique identifier for the client performing the mutation. */
+  readonly clientMutationId: Maybe<Scalars['String']>;
+};
+
+/** Autogenerated return type of UpdateCheckSuitePreferences */
+type Github_UpdateCheckSuitePreferencesPayload = {
+  /** A unique identifier for the client performing the mutation. */
+  readonly clientMutationId: Maybe<Scalars['String']>;
+  /** The updated repository. */
+  readonly repository: Maybe<Github_Repository>;
 };
 
 /** Autogenerated input type of UpdateEnterpriseActionExecutionCapabilitySetting */
@@ -18426,8 +18921,6 @@ type Query_allSitePageArgs = {
 type Query_siteArgs = {
   buildTime: Maybe<DateQueryOperatorInput>;
   siteMetadata: Maybe<SiteSiteMetadataFilterInput>;
-  port: Maybe<IntQueryOperatorInput>;
-  host: Maybe<StringQueryOperatorInput>;
   polyfill: Maybe<BooleanQueryOperatorInput>;
   pathPrefix: Maybe<StringQueryOperatorInput>;
   id: Maybe<StringQueryOperatorInput>;
@@ -18529,8 +19022,6 @@ type Query_allSitePluginArgs = {
 type Site = Node & {
   readonly buildTime: Maybe<Scalars['Date']>;
   readonly siteMetadata: Maybe<SiteSiteMetadata>;
-  readonly port: Maybe<Scalars['Int']>;
-  readonly host: Maybe<Scalars['String']>;
   readonly polyfill: Maybe<Scalars['Boolean']>;
   readonly pathPrefix: Maybe<Scalars['String']>;
   readonly id: Scalars['ID'];
@@ -18733,8 +19224,6 @@ enum SiteFieldsEnum {
   buildTime = 'buildTime',
   siteMetadata___title = 'siteMetadata.title',
   siteMetadata___description = 'siteMetadata.description',
-  port = 'port',
-  host = 'host',
   polyfill = 'polyfill',
   pathPrefix = 'pathPrefix',
   id = 'id',
@@ -18828,8 +19317,6 @@ enum SiteFieldsEnum {
 type SiteFilterInput = {
   readonly buildTime: Maybe<DateQueryOperatorInput>;
   readonly siteMetadata: Maybe<SiteSiteMetadataFilterInput>;
-  readonly port: Maybe<IntQueryOperatorInput>;
-  readonly host: Maybe<StringQueryOperatorInput>;
   readonly polyfill: Maybe<BooleanQueryOperatorInput>;
   readonly pathPrefix: Maybe<StringQueryOperatorInput>;
   readonly id: Maybe<StringQueryOperatorInput>;
@@ -19044,6 +19531,7 @@ enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___fieldName = 'pluginCreator.pluginOptions.fieldName',
   pluginCreator___pluginOptions___url = 'pluginCreator.pluginOptions.url',
   pluginCreator___pluginOptions___headers___Authorization = 'pluginCreator.pluginOptions.headers.Authorization',
+  pluginCreator___pluginOptions___ssr = 'pluginCreator.pluginOptions.ssr',
   pluginCreator___pluginOptions___pathCheck = 'pluginCreator.pluginOptions.pathCheck',
   pluginCreator___nodeAPIs = 'pluginCreator.nodeAPIs',
   pluginCreator___browserAPIs = 'pluginCreator.browserAPIs',
@@ -19251,6 +19739,7 @@ enum SitePluginFieldsEnum {
   pluginOptions___fieldName = 'pluginOptions.fieldName',
   pluginOptions___url = 'pluginOptions.url',
   pluginOptions___headers___Authorization = 'pluginOptions.headers.Authorization',
+  pluginOptions___ssr = 'pluginOptions.ssr',
   pluginOptions___pathCheck = 'pluginOptions.pathCheck',
   nodeAPIs = 'nodeAPIs',
   browserAPIs = 'browserAPIs',
@@ -19384,6 +19873,7 @@ type SitePluginPluginOptions = {
   readonly fieldName: Maybe<Scalars['String']>;
   readonly url: Maybe<Scalars['String']>;
   readonly headers: Maybe<SitePluginPluginOptionsHeaders>;
+  readonly ssr: Maybe<Scalars['Boolean']>;
   readonly pathCheck: Maybe<Scalars['Boolean']>;
 };
 
@@ -19425,6 +19915,7 @@ type SitePluginPluginOptionsFilterInput = {
   readonly fieldName: Maybe<StringQueryOperatorInput>;
   readonly url: Maybe<StringQueryOperatorInput>;
   readonly headers: Maybe<SitePluginPluginOptionsHeadersFilterInput>;
+  readonly ssr: Maybe<BooleanQueryOperatorInput>;
   readonly pathCheck: Maybe<BooleanQueryOperatorInput>;
 };
 
@@ -19470,10 +19961,10 @@ type StringQueryOperatorInput = {
   readonly glob: Maybe<Scalars['String']>;
 };
 
-type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
+type ImageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type PagesQueryQuery = { readonly allSitePage: { readonly nodes: ReadonlyArray<Pick<SitePage, 'path'>> } };
+type ImageQuery = { readonly placeholderImage: Maybe<{ readonly childImageSharp: Maybe<{ readonly fluid: Maybe<GatsbyImageSharpFluidFragment> }> }> };
 
 type Profile_userFragment = (
   Pick<Github_User, 'bio' | 'avatarUrl' | 'company' | 'email' | 'name' | 'websiteUrl' | 'location'>
@@ -19490,6 +19981,56 @@ type Gist_gistFragment = (
   & { readonly files: Maybe<ReadonlyArray<Maybe<Pick<Github_GistFile, 'text' | 'name'>>>> }
 );
 
+type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
+
+type GatsbyImageSharpFixed_tracedSVGFragment = Pick<ImageSharpFixed, 'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet'>;
+
+type GatsbyImageSharpFixed_withWebpFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'>;
+
+type GatsbyImageSharpFixed_withWebp_tracedSVGFragment = Pick<ImageSharpFixed, 'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'>;
+
+type GatsbyImageSharpFixed_noBase64Fragment = Pick<ImageSharpFixed, 'width' | 'height' | 'src' | 'srcSet'>;
+
+type GatsbyImageSharpFixed_withWebp_noBase64Fragment = Pick<ImageSharpFixed, 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'>;
+
+type GatsbyImageSharpFluidFragment = Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
+
+type GatsbyImageSharpFluidLimitPresentationSizeFragment = { maxHeight: ImageSharpFluid['presentationHeight'], maxWidth: ImageSharpFluid['presentationWidth'] };
+
+type GatsbyImageSharpFluid_tracedSVGFragment = Pick<ImageSharpFluid, 'tracedSVG' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
+
+type GatsbyImageSharpFluid_withWebpFragment = Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
+
+type GatsbyImageSharpFluid_withWebp_tracedSVGFragment = Pick<ImageSharpFluid, 'tracedSVG' | 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
+
+type GatsbyImageSharpFluid_noBase64Fragment = Pick<ImageSharpFluid, 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
+
+type GatsbyImageSharpFluid_withWebp_noBase64Fragment = Pick<ImageSharpFluid, 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
+
+type GatsbyImageSharpResolutionsFragment = Pick<ImageSharpResolutions, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
+
+type GatsbyImageSharpResolutions_tracedSVGFragment = Pick<ImageSharpResolutions, 'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet'>;
+
+type GatsbyImageSharpResolutions_withWebpFragment = Pick<ImageSharpResolutions, 'base64' | 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'>;
+
+type GatsbyImageSharpResolutions_withWebp_tracedSVGFragment = Pick<ImageSharpResolutions, 'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'>;
+
+type GatsbyImageSharpResolutions_noBase64Fragment = Pick<ImageSharpResolutions, 'width' | 'height' | 'src' | 'srcSet'>;
+
+type GatsbyImageSharpResolutions_withWebp_noBase64Fragment = Pick<ImageSharpResolutions, 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'>;
+
+type GatsbyImageSharpSizesFragment = Pick<ImageSharpSizes, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
+
+type GatsbyImageSharpSizes_tracedSVGFragment = Pick<ImageSharpSizes, 'tracedSVG' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
+
+type GatsbyImageSharpSizes_withWebpFragment = Pick<ImageSharpSizes, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
+
+type GatsbyImageSharpSizes_withWebp_tracedSVGFragment = Pick<ImageSharpSizes, 'tracedSVG' | 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
+
+type GatsbyImageSharpSizes_noBase64Fragment = Pick<ImageSharpSizes, 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
+
+type GatsbyImageSharpSizes_withWebp_noBase64Fragment = Pick<ImageSharpSizes, 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
+
 type GithubProfileQueryVariables = Exact<{
   login?: Maybe<Scalars['String']>;
 }>;
@@ -19497,15 +20038,18 @@ type GithubProfileQueryVariables = Exact<{
 
 type GithubProfileQuery = { readonly github: { readonly user: Maybe<(
       { readonly pinnableItems: { readonly nodes: Maybe<ReadonlyArray<Maybe<(
-          { readonly __typename: 'Github_Gist' }
-          & Pick<Github_Gist, 'id'>
+          Pick<Github_Gist, 'id'>
           & Gist_gistFragment
         ) | (
-          { readonly __typename: 'Github_Repository' }
-          & Pick<Github_Repository, 'id'>
+          Pick<Github_Repository, 'id'>
           & Repository_repositoryFragment
         )>>> } }
       & Profile_userFragment
     )> } };
+
+type LayoutQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type LayoutQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
 
 }
