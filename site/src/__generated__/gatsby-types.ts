@@ -11,14 +11,23 @@ type Scalars = {
   Int: number;
   Float: number;
   Date: string;
+  /** An RFC 3986, RFC 3987, and RFC 6570 (level 4) compliant URI string. */
   Github_URI: any;
+  /** An ISO-8601 encoded UTC date string. */
   Github_DateTime: any;
+  /** A string containing HTML code. */
   Github_HTML: any;
+  /** A Git object ID. */
   Github_GitObjectID: any;
+  /** An ISO-8601 encoded date string. Unlike the DateTime type, GitTimestamp is not converted in UTC. */
   Github_GitTimestamp: any;
+  /** Git SSH string */
   Github_GitSSHRemote: any;
+  /** An ISO-8601 encoded date string. */
   Github_Date: any;
+  /** An ISO-8601 encoded UTC date string with millisecond precison. */
   Github_PreciseDateTime: any;
+  /** A valid x509 certificate string */
   Github_X509Certificate: any;
   JSON: never;
 };
@@ -19961,24 +19970,45 @@ type StringQueryOperatorInput = {
   readonly glob: Maybe<Scalars['String']>;
 };
 
-type ImageQueryVariables = Exact<{ [key: string]: never; }>;
+type Gist_gistFragment = (
+  Pick<Github_Gist, 'url'>
+  & { readonly files: Maybe<ReadonlyArray<Maybe<Pick<Github_GistFile, 'text' | 'name'>>>> }
+);
+
+type LayoutQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type ImageQuery = { readonly placeholderImage: Maybe<{ readonly childImageSharp: Maybe<{ readonly fluid: Maybe<GatsbyImageSharpFluidFragment> }> }> };
+type LayoutQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
 
 type Profile_userFragment = (
   Pick<Github_User, 'bio' | 'avatarUrl' | 'company' | 'email' | 'name' | 'websiteUrl' | 'location'>
   & { readonly followers: Pick<Github_FollowerConnection, 'totalCount'>, readonly following: Pick<Github_FollowingConnection, 'totalCount'>, readonly starredRepositories: Pick<Github_StarredRepositoryConnection, 'totalCount'> }
 );
 
+type ImageQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type ImageQuery = { readonly placeholderImage: Maybe<{ readonly childImageSharp: Maybe<{ readonly fluid: Maybe<GatsbyImageSharpFluidFragment> }> }> };
+
+type GithubProfileQueryVariables = Exact<{
+  login?: Maybe<Scalars['String']>;
+}>;
+
+
+type GithubProfileQuery = { readonly github: { readonly user: Maybe<(
+      { readonly pinnableItems: { readonly nodes: Maybe<ReadonlyArray<Maybe<(
+          Pick<Github_Gist, 'id'>
+          & Gist_gistFragment
+        ) | (
+          Pick<Github_Repository, 'id'>
+          & Repository_repositoryFragment
+        )>>> } }
+      & Profile_userFragment
+    )> } };
+
 type Repository_repositoryFragment = (
   Pick<Github_Repository, 'name' | 'url' | 'description' | 'forkCount'>
   & { readonly primaryLanguage: Maybe<Pick<Github_Language, 'name'>>, readonly stargazers: Pick<Github_StargazerConnection, 'totalCount'> }
-);
-
-type Gist_gistFragment = (
-  Pick<Github_Gist, 'url'>
-  & { readonly files: Maybe<ReadonlyArray<Maybe<Pick<Github_GistFile, 'text' | 'name'>>>> }
 );
 
 type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
@@ -20030,26 +20060,5 @@ type GatsbyImageSharpSizes_withWebp_tracedSVGFragment = Pick<ImageSharpSizes, 't
 type GatsbyImageSharpSizes_noBase64Fragment = Pick<ImageSharpSizes, 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
 
 type GatsbyImageSharpSizes_withWebp_noBase64Fragment = Pick<ImageSharpSizes, 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
-
-type GithubProfileQueryVariables = Exact<{
-  login?: Maybe<Scalars['String']>;
-}>;
-
-
-type GithubProfileQuery = { readonly github: { readonly user: Maybe<(
-      { readonly pinnableItems: { readonly nodes: Maybe<ReadonlyArray<Maybe<(
-          Pick<Github_Gist, 'id'>
-          & Gist_gistFragment
-        ) | (
-          Pick<Github_Repository, 'id'>
-          & Repository_repositoryFragment
-        )>>> } }
-      & Profile_userFragment
-    )> } };
-
-type LayoutQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type LayoutQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
 
 }

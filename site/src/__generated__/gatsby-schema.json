@@ -20985,7 +20985,7 @@
               },
               {
                 "name": "viewerCanAdmin",
-                "description": "Select listings to which user has admin access. If omitted, listings visible to the\nviewer are returned.\n",
+                "description": "Select listings to which user has admin access. If omitted, listings visible to the\nviewer are returned.",
                 "type": {
                   "kind": "SCALAR",
                   "name": "Boolean",
@@ -21015,7 +21015,7 @@
               },
               {
                 "name": "allStates",
-                "description": "Select listings visible to the viewer even if they are not approved. If omitted or\nfalse, only approved listings will be returned.\n",
+                "description": "Select listings visible to the viewer even if they are not approved. If omitted or\nfalse, only approved listings will be returned.",
                 "type": {
                   "kind": "SCALAR",
                   "name": "Boolean",
@@ -24684,7 +24684,7 @@
           },
           {
             "name": "itemShowcase",
-            "description": "Showcases a selection of repositories and gists that the profile owner has either curated or that have been selected automatically based on popularity.",
+            "description": "Showcases a selection of repositories and gists that the profile owner has\neither curated or that have been selected automatically based on popularity.",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -25410,7 +25410,7 @@
               },
               {
                 "name": "affiliations",
-                "description": "Array of viewer's affiliation options for repositories returned from the connection. For example, OWNER will include only repositories that the current viewer owns.",
+                "description": "Array of viewer's affiliation options for repositories returned from the\nconnection. For example, OWNER will include only repositories that the\ncurrent viewer owns.",
                 "type": {
                   "kind": "LIST",
                   "name": null,
@@ -25424,7 +25424,7 @@
               },
               {
                 "name": "ownerAffiliations",
-                "description": "Array of owner's affiliation options for repositories returned from the connection. For example, OWNER will include only repositories that the organization or user being viewed owns.",
+                "description": "Array of owner's affiliation options for repositories returned from the\nconnection. For example, OWNER will include only repositories that the\norganization or user being viewed owns.",
                 "type": {
                   "kind": "LIST",
                   "name": null,
@@ -25538,7 +25538,7 @@
           },
           {
             "name": "requiresTwoFactorAuthentication",
-            "description": "When true the organization requires all members, billing managers, and outside collaborators to enable two-factor authentication.",
+            "description": "When true the organization requires all members, billing managers, and outside\ncollaborators to enable two-factor authentication.",
             "args": [],
             "type": {
               "kind": "SCALAR",
@@ -25644,7 +25644,7 @@
               },
               {
                 "name": "orderBy",
-                "description": "Ordering options for sponsorships returned from this connection. If left blank, the sponsorships will be ordered based on relevancy to the viewer.",
+                "description": "Ordering options for sponsorships returned from this connection. If left\nblank, the sponsorships will be ordered based on relevancy to the viewer.",
                 "type": {
                   "kind": "INPUT_OBJECT",
                   "name": "Github_SponsorshipOrder",
@@ -25711,7 +25711,7 @@
               },
               {
                 "name": "orderBy",
-                "description": "Ordering options for sponsorships returned from this connection. If left blank, the sponsorships will be ordered based on relevancy to the viewer.",
+                "description": "Ordering options for sponsorships returned from this connection. If left\nblank, the sponsorships will be ordered based on relevancy to the viewer.",
                 "type": {
                   "kind": "INPUT_OBJECT",
                   "name": "Github_SponsorshipOrder",
@@ -27918,7 +27918,7 @@
               },
               {
                 "name": "to",
-                "description": "Only contributions made before and up to and including this time will be counted. If omitted, defaults to the current time.",
+                "description": "Only contributions made before and up to and including this time will be\ncounted. If omitted, defaults to the current time.",
                 "type": {
                   "kind": "SCALAR",
                   "name": "Github_DateTime",
@@ -28585,7 +28585,7 @@
           },
           {
             "name": "itemShowcase",
-            "description": "Showcases a selection of repositories and gists that the profile owner has either curated or that have been selected automatically based on popularity.",
+            "description": "Showcases a selection of repositories and gists that the profile owner has\neither curated or that have been selected automatically based on popularity.",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -29389,7 +29389,7 @@
               },
               {
                 "name": "affiliations",
-                "description": "Array of viewer's affiliation options for repositories returned from the connection. For example, OWNER will include only repositories that the current viewer owns.",
+                "description": "Array of viewer's affiliation options for repositories returned from the\nconnection. For example, OWNER will include only repositories that the\ncurrent viewer owns.",
                 "type": {
                   "kind": "LIST",
                   "name": null,
@@ -29403,7 +29403,7 @@
               },
               {
                 "name": "ownerAffiliations",
-                "description": "Array of owner's affiliation options for repositories returned from the connection. For example, OWNER will include only repositories that the organization or user being viewed owns.",
+                "description": "Array of owner's affiliation options for repositories returned from the\nconnection. For example, OWNER will include only repositories that the\norganization or user being viewed owns.",
                 "type": {
                   "kind": "LIST",
                   "name": null,
@@ -29534,7 +29534,7 @@
               },
               {
                 "name": "contributionTypes",
-                "description": "If non-null, include only the specified types of contributions. The GitHub.com UI uses [COMMIT, ISSUE, PULL_REQUEST, REPOSITORY]",
+                "description": "If non-null, include only the specified types of contributions. The\nGitHub.com UI uses [COMMIT, ISSUE, PULL_REQUEST, REPOSITORY]",
                 "type": {
                   "kind": "LIST",
                   "name": null,
@@ -29773,7 +29773,7 @@
               },
               {
                 "name": "orderBy",
-                "description": "Ordering options for sponsorships returned from this connection. If left blank, the sponsorships will be ordered based on relevancy to the viewer.",
+                "description": "Ordering options for sponsorships returned from this connection. If left\nblank, the sponsorships will be ordered based on relevancy to the viewer.",
                 "type": {
                   "kind": "INPUT_OBJECT",
                   "name": "Github_SponsorshipOrder",
@@ -29840,7 +29840,7 @@
               },
               {
                 "name": "orderBy",
-                "description": "Ordering options for sponsorships returned from this connection. If left blank, the sponsorships will be ordered based on relevancy to the viewer.",
+                "description": "Ordering options for sponsorships returned from this connection. If left\nblank, the sponsorships will be ordered based on relevancy to the viewer.",
                 "type": {
                   "kind": "INPUT_OBJECT",
                   "name": "Github_SponsorshipOrder",
@@ -29952,7 +29952,7 @@
           },
           {
             "name": "topRepositories",
-            "description": "Repositories the user has contributed to, ordered by contribution rank, plus repositories the user has created\n",
+            "description": "Repositories the user has contributed to, ordered by contribution rank, plus repositories the user has created",
             "args": [
               {
                 "name": "after",
@@ -30165,7 +30165,7 @@
               },
               {
                 "name": "affiliations",
-                "description": "Affiliation options for repositories returned from the connection. If none specified, the results will include repositories for which the current viewer is an owner or collaborator, or member.",
+                "description": "Affiliation options for repositories returned from the connection. If none\nspecified, the results will include repositories for which the current\nviewer is an owner or collaborator, or member.",
                 "type": {
                   "kind": "LIST",
                   "name": null,
@@ -30179,7 +30179,7 @@
               },
               {
                 "name": "ownerAffiliations",
-                "description": "Array of owner's affiliation options for repositories returned from the connection. For example, OWNER will include only repositories that the organization or user being viewed owns.",
+                "description": "Array of owner's affiliation options for repositories returned from the\nconnection. For example, OWNER will include only repositories that the\norganization or user being viewed owns.",
                 "type": {
                   "kind": "LIST",
                   "name": null,
@@ -31557,7 +31557,7 @@
         "fields": [
           {
             "name": "column",
-            "description": "The project column this card is associated under. A card may only belong to one\nproject column at a time. The column field will be null if the card is created\nin a pending state and has yet to be associated with a column. Once cards are\nassociated with a column, they will not become pending in the future.\n",
+            "description": "The project column this card is associated under. A card may only belong to one\nproject column at a time. The column field will be null if the card is created\nin a pending state and has yet to be associated with a column. Once cards are\nassociated with a column, they will not become pending in the future.",
             "args": [],
             "type": {
               "kind": "OBJECT",
@@ -34708,7 +34708,7 @@
         "inputFields": [
           {
             "name": "assignee",
-            "description": "List issues assigned to given name. Pass in `null` for issues with no assigned user, and `*` for issues assigned to any user.",
+            "description": "List issues assigned to given name. Pass in `null` for issues with no assigned\nuser, and `*` for issues assigned to any user.",
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -34756,7 +34756,7 @@
           },
           {
             "name": "milestone",
-            "description": "List issues by given milestone argument. If an string representation of an integer is passed, it should refer to a milestone by its number field. Pass in `null` for issues with no milestone, and `*` for issues that are assigned to any milestone.",
+            "description": "List issues by given milestone argument. If an string representation of an\ninteger is passed, it should refer to a milestone by its number field. Pass in\n`null` for issues with no milestone, and `*` for issues that are assigned to any milestone.",
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -36166,7 +36166,7 @@
           },
           {
             "name": "potentialMergeCommit",
-            "description": "The commit that GitHub automatically generated to test if this pull request could be merged. This field will not return a value if the pull request is merged, or if the test merge commit is still being generated. See the `mergeable` field for more details on the mergeability of the pull request.",
+            "description": "The commit that GitHub automatically generated to test if this pull request\ncould be merged. This field will not return a value if the pull request is\nmerged, or if the test merge commit is still being generated. See the\n`mergeable` field for more details on the mergeability of the pull request.",
             "args": [],
             "type": {
               "kind": "OBJECT",
@@ -38709,7 +38709,7 @@
               },
               {
                 "name": "affiliations",
-                "description": "Array of viewer's affiliation options for repositories returned from the connection. For example, OWNER will include only repositories that the current viewer owns.",
+                "description": "Array of viewer's affiliation options for repositories returned from the\nconnection. For example, OWNER will include only repositories that the\ncurrent viewer owns.",
                 "type": {
                   "kind": "LIST",
                   "name": null,
@@ -38723,7 +38723,7 @@
               },
               {
                 "name": "ownerAffiliations",
-                "description": "Array of owner's affiliation options for repositories returned from the connection. For example, OWNER will include only repositories that the organization or user being viewed owns.",
+                "description": "Array of owner's affiliation options for repositories returned from the\nconnection. For example, OWNER will include only repositories that the\norganization or user being viewed owns.",
                 "type": {
                   "kind": "LIST",
                   "name": null,
@@ -40233,7 +40233,7 @@
             "args": [
               {
                 "name": "qualifiedName",
-                "description": "The ref to retrieve. Fully qualified matches are checked in order (`refs/heads/master`) before falling back onto checks for short name matches (`master`).",
+                "description": "The ref to retrieve. Fully qualified matches are checked in order\n(`refs/heads/master`) before falling back onto checks for short name matches (`master`).",
                 "type": {
                   "kind": "NON_NULL",
                   "name": null,
@@ -40591,7 +40591,7 @@
           },
           {
             "name": "stargazerCount",
-            "description": "Returns a count of how many stargazers there are on this object\n",
+            "description": "Returns a count of how many stargazers there are on this object",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -40674,7 +40674,7 @@
           },
           {
             "name": "submodules",
-            "description": "Returns a list of all submodules in this repository parsed from the .gitmodules file as of the default branch's HEAD commit.",
+            "description": "Returns a list of all submodules in this repository parsed from the\n.gitmodules file as of the default branch's HEAD commit.",
             "args": [
               {
                 "name": "after",
@@ -41243,7 +41243,7 @@
           },
           {
             "name": "stargazerCount",
-            "description": "Returns a count of how many stargazers there are on this object\n",
+            "description": "Returns a count of how many stargazers there are on this object",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -42437,7 +42437,7 @@
               },
               {
                 "name": "affiliations",
-                "description": "Array of viewer's affiliation options for repositories returned from the connection. For example, OWNER will include only repositories that the current viewer owns.",
+                "description": "Array of viewer's affiliation options for repositories returned from the\nconnection. For example, OWNER will include only repositories that the\ncurrent viewer owns.",
                 "type": {
                   "kind": "LIST",
                   "name": null,
@@ -42451,7 +42451,7 @@
               },
               {
                 "name": "ownerAffiliations",
-                "description": "Array of owner's affiliation options for repositories returned from the connection. For example, OWNER will include only repositories that the organization or user being viewed owns.",
+                "description": "Array of owner's affiliation options for repositories returned from the\nconnection. For example, OWNER will include only repositories that the\norganization or user being viewed owns.",
                 "type": {
                   "kind": "LIST",
                   "name": null,
@@ -42737,7 +42737,7 @@
           },
           {
             "name": "ORGANIZATION_MEMBER",
-            "description": "Repositories that the user has access to through being a member of an organization. This includes every repository on every team that the user is on.",
+            "description": "Repositories that the user has access to through being a member of an\norganization. This includes every repository on every team that the user is on.",
             "isDeprecated": false,
             "deprecationReason": null
           }
@@ -48825,7 +48825,7 @@
           },
           {
             "name": "permission",
-            "description": "The permission level the team has on the repository\n\n**Upcoming Change on 2020-10-01 UTC**\n**Description:** Type for `permission` will change from `RepositoryPermission!` to `String`.\n**Reason:** This field may return additional values\n",
+            "description": "The permission level the team has on the repository\n\n**Upcoming Change on 2020-10-01 UTC**\n**Description:** Type for `permission` will change from `RepositoryPermission!` to `String`.\n**Reason:** This field may return additional values",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -48855,7 +48855,7 @@
         "enumValues": [
           {
             "name": "ADMIN",
-            "description": "Can read, clone, and push to this repository. Can also manage issues, pull requests, and repository settings, including adding collaborators",
+            "description": "Can read, clone, and push to this repository. Can also manage issues, pull\nrequests, and repository settings, including adding collaborators",
             "isDeprecated": false,
             "deprecationReason": null
           },
@@ -49221,7 +49221,7 @@
           },
           {
             "name": "permission",
-            "description": "The permission the user has on the repository.\n\n**Upcoming Change on 2020-10-01 UTC**\n**Description:** Type for `permission` will change from `RepositoryPermission!` to `String`.\n**Reason:** This field may return additional values\n",
+            "description": "The permission the user has on the repository.\n\n**Upcoming Change on 2020-10-01 UTC**\n**Description:** Type for `permission` will change from `RepositoryPermission!` to `String`.\n**Reason:** This field may return additional values",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -50339,7 +50339,7 @@
           },
           {
             "name": "authors",
-            "description": "The list of authors for this commit based on the git author and the Co-authored-by\nmessage trailer. The git author will always be first.\n",
+            "description": "The list of authors for this commit based on the git author and the Co-authored-by\nmessage trailer. The git author will always be first.",
             "args": [
               {
                 "name": "after",
@@ -51641,7 +51641,7 @@
         "fields": [
           {
             "name": "age",
-            "description": "Identifies the recency of the change, from 1 (new) to 10 (old). This is calculated as a 2-quantile and determines the length of distance between the median age of all the changes in the file and the recency of the current range's change.",
+            "description": "Identifies the recency of the change, from 1 (new) to 10 (old). This is\ncalculated as a 2-quantile and determines the length of distance between the\nmedian age of all the changes in the file and the recency of the current\nrange's change.",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -54382,7 +54382,7 @@
         "inputFields": [
           {
             "name": "id",
-            "description": "ID of a User to filter by. If non-null, only commits authored by this user will be returned. This field takes precedence over emails.",
+            "description": "ID of a User to filter by. If non-null, only commits authored by this user\nwill be returned. This field takes precedence over emails.",
             "type": {
               "kind": "SCALAR",
               "name": "ID",
@@ -54685,7 +54685,7 @@
           },
           {
             "name": "state",
-            "description": "The state of this signature. `VALID` if signature is valid and verified by GitHub, otherwise represents reason why signature is considered invalid.",
+            "description": "The state of this signature. `VALID` if signature is valid and verified by\nGitHub, otherwise represents reason why signature is considered invalid.",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -57864,7 +57864,7 @@
           },
           {
             "name": "relatedTopics",
-            "description": "A list of related topics, including aliases of this topic, sorted with the most relevant\nfirst. Returns up to 10 Topics.\n",
+            "description": "A list of related topics, including aliases of this topic, sorted with the most relevant\nfirst. Returns up to 10 Topics.",
             "args": [
               {
                 "name": "first",
@@ -57899,7 +57899,7 @@
           },
           {
             "name": "stargazerCount",
-            "description": "Returns a count of how many stargazers there are on this object\n",
+            "description": "Returns a count of how many stargazers there are on this object",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -59079,7 +59079,7 @@
           },
           {
             "name": "vulnerableVersionRange",
-            "description": "A string that describes the vulnerable package versions.\nThis string follows a basic syntax with a few forms.\n+ `= 0.2.0` denotes a single vulnerable version.\n+ `<= 1.0.8` denotes a version range up to and including the specified version\n+ `< 0.1.11` denotes a version range up to, but excluding, the specified version\n+ `>= 4.3.0, < 4.3.5` denotes a version range with a known minimum and maximum version.\n+ `>= 0.0.1` denotes a version range with a known minimum, but no known maximum\n",
+            "description": "A string that describes the vulnerable package versions.\nThis string follows a basic syntax with a few forms.\n+ `= 0.2.0` denotes a single vulnerable version.\n+ `<= 1.0.8` denotes a version range up to and including the specified version\n+ `< 0.1.11` denotes a version range up to, but excluding, the specified version\n+ `>= 4.3.0, < 4.3.5` denotes a version range with a known minimum and maximum version.\n+ `>= 0.0.1` denotes a version range with a known minimum, but no known maximum",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -59522,7 +59522,7 @@
           },
           {
             "name": "pullRequest",
-            "description": "Returns the pull request associated with the comment, if this comment was made on a\npull request.\n",
+            "description": "Returns the pull request associated with the comment, if this comment was made on a\npull request.",
             "args": [],
             "type": {
               "kind": "OBJECT",
@@ -60415,12 +60415,12 @@
           },
           {
             "kind": "OBJECT",
-            "name": "Github_OrganizationTeamsHovercardContext",
+            "name": "Github_OrganizationsHovercardContext",
             "ofType": null
           },
           {
             "kind": "OBJECT",
-            "name": "Github_OrganizationsHovercardContext",
+            "name": "Github_OrganizationTeamsHovercardContext",
             "ofType": null
           },
           {
@@ -70415,7 +70415,7 @@
           },
           {
             "name": "itemShowcase",
-            "description": "Showcases a selection of repositories and gists that the profile owner has either curated or that have been selected automatically based on popularity.",
+            "description": "Showcases a selection of repositories and gists that the profile owner has\neither curated or that have been selected automatically based on popularity.",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -70742,7 +70742,7 @@
       {
         "kind": "OBJECT",
         "name": "Github_ProfileItemShowcase",
-        "description": "A curatable list of repositories relating to a repository owner, which defaults to showing the most popular repositories they own.",
+        "description": "A curatable list of repositories relating to a repository owner, which defaults\nto showing the most popular repositories they own.",
         "fields": [
           {
             "name": "hasPinnedItems",
@@ -70762,7 +70762,7 @@
           },
           {
             "name": "items",
-            "description": "The repositories and gists in the showcase. If the profile owner has any pinned items, those will be returned. Otherwise, the profile owner's popular repositories will be returned.",
+            "description": "The repositories and gists in the showcase. If the profile owner has any\npinned items, those will be returned. Otherwise, the profile owner's popular\nrepositories will be returned.",
             "args": [
               {
                 "name": "after",
@@ -71258,7 +71258,7 @@
           },
           {
             "name": "stargazerCount",
-            "description": "Returns a count of how many stargazers there are on this object\n",
+            "description": "Returns a count of how many stargazers there are on this object",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -72347,7 +72347,7 @@
               },
               {
                 "name": "orderBy",
-                "description": "Ordering options for sponsorships returned from this connection. If left blank, the sponsorships will be ordered based on relevancy to the viewer.",
+                "description": "Ordering options for sponsorships returned from this connection. If left\nblank, the sponsorships will be ordered based on relevancy to the viewer.",
                 "type": {
                   "kind": "INPUT_OBJECT",
                   "name": "Github_SponsorshipOrder",
@@ -72414,7 +72414,7 @@
               },
               {
                 "name": "orderBy",
-                "description": "Ordering options for sponsorships returned from this connection. If left blank, the sponsorships will be ordered based on relevancy to the viewer.",
+                "description": "Ordering options for sponsorships returned from this connection. If left\nblank, the sponsorships will be ordered based on relevancy to the viewer.",
                 "type": {
                   "kind": "INPUT_OBJECT",
                   "name": "Github_SponsorshipOrder",
@@ -73054,7 +73054,7 @@
               },
               {
                 "name": "orderBy",
-                "description": "Ordering options for sponsorships returned from this connection. If left blank, the sponsorships will be ordered based on relevancy to the viewer.",
+                "description": "Ordering options for sponsorships returned from this connection. If left\nblank, the sponsorships will be ordered based on relevancy to the viewer.",
                 "type": {
                   "kind": "INPUT_OBJECT",
                   "name": "Github_SponsorshipOrder",
@@ -73510,7 +73510,7 @@
           },
           {
             "name": "doesEndInCurrentMonth",
-            "description": "Determine if this collection's time span ends in the current month.\n",
+            "description": "Determine if this collection's time span ends in the current month.",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -73526,7 +73526,7 @@
           },
           {
             "name": "earliestRestrictedContributionDate",
-            "description": "The date of the first restricted contribution the user made in this time period. Can only be non-null when the user has enabled private contribution counts.",
+            "description": "The date of the first restricted contribution the user made in this time\nperiod. Can only be non-null when the user has enabled private contribution counts.",
             "args": [],
             "type": {
               "kind": "SCALAR",
@@ -73554,7 +73554,7 @@
           },
           {
             "name": "firstIssueContribution",
-            "description": "The first issue the user opened on GitHub. This will be null if that issue was opened outside the collection's time range and ignoreTimeRange is false. If the issue is not visible but the user has opted to show private contributions, a RestrictedContribution will be returned.",
+            "description": "The first issue the user opened on GitHub. This will be null if that issue was\nopened outside the collection's time range and ignoreTimeRange is false. If\nthe issue is not visible but the user has opted to show private contributions,\na RestrictedContribution will be returned.",
             "args": [],
             "type": {
               "kind": "UNION",
@@ -73566,7 +73566,7 @@
           },
           {
             "name": "firstPullRequestContribution",
-            "description": "The first pull request the user opened on GitHub. This will be null if that pull request was opened outside the collection's time range and ignoreTimeRange is not true. If the pull request is not visible but the user has opted to show private contributions, a RestrictedContribution will be returned.",
+            "description": "The first pull request the user opened on GitHub. This will be null if that\npull request was opened outside the collection's time range and\nignoreTimeRange is not true. If the pull request is not visible but the user\nhas opted to show private contributions, a RestrictedContribution will be returned.",
             "args": [],
             "type": {
               "kind": "UNION",
@@ -73578,7 +73578,7 @@
           },
           {
             "name": "firstRepositoryContribution",
-            "description": "The first repository the user created on GitHub. This will be null if that first repository was created outside the collection's time range and ignoreTimeRange is false. If the repository is not visible, then a RestrictedContribution is returned.",
+            "description": "The first repository the user created on GitHub. This will be null if that\nfirst repository was created outside the collection's time range and\nignoreTimeRange is false. If the repository is not visible, then a\nRestrictedContribution is returned.",
             "args": [],
             "type": {
               "kind": "UNION",
@@ -73622,7 +73622,7 @@
           },
           {
             "name": "hasAnyRestrictedContributions",
-            "description": "Determine if the user made any contributions in this time frame whose details are not visible because they were made in a private repository. Can only be true if the user enabled private contribution counts.",
+            "description": "Determine if the user made any contributions in this time frame whose details\nare not visible because they were made in a private repository. Can only be\ntrue if the user enabled private contribution counts.",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -73796,7 +73796,7 @@
           },
           {
             "name": "joinedGitHubContribution",
-            "description": "When the user signed up for GitHub. This will be null if that sign up date falls outside the collection's time range and ignoreTimeRange is false.",
+            "description": "When the user signed up for GitHub. This will be null if that sign up date\nfalls outside the collection's time range and ignoreTimeRange is false.",
             "args": [],
             "type": {
               "kind": "OBJECT",
@@ -73808,7 +73808,7 @@
           },
           {
             "name": "latestRestrictedContributionDate",
-            "description": "The date of the most recent restricted contribution the user made in this time period. Can only be non-null when the user has enabled private contribution counts.",
+            "description": "The date of the most recent restricted contribution the user made in this time\nperiod. Can only be non-null when the user has enabled private contribution counts.",
             "args": [],
             "type": {
               "kind": "SCALAR",
@@ -73820,7 +73820,7 @@
           },
           {
             "name": "mostRecentCollectionWithActivity",
-            "description": "When this collection's time range does not include any activity from the user, use this\nto get a different collection from an earlier time range that does have activity.\n",
+            "description": "When this collection's time range does not include any activity from the user, use this\nto get a different collection from an earlier time range that does have activity.",
             "args": [],
             "type": {
               "kind": "OBJECT",
@@ -73832,7 +73832,7 @@
           },
           {
             "name": "mostRecentCollectionWithoutActivity",
-            "description": "Returns a different contributions collection from an earlier time range than this one\nthat does not have any contributions.\n",
+            "description": "Returns a different contributions collection from an earlier time range than this one\nthat does not have any contributions.",
             "args": [],
             "type": {
               "kind": "OBJECT",
@@ -73844,7 +73844,7 @@
           },
           {
             "name": "popularIssueContribution",
-            "description": "The issue the user opened on GitHub that received the most comments in the specified\ntime frame.\n",
+            "description": "The issue the user opened on GitHub that received the most comments in the specified\ntime frame.",
             "args": [],
             "type": {
               "kind": "OBJECT",
@@ -73856,7 +73856,7 @@
           },
           {
             "name": "popularPullRequestContribution",
-            "description": "The pull request the user opened on GitHub that received the most comments in the\nspecified time frame.\n",
+            "description": "The pull request the user opened on GitHub that received the most comments in the\nspecified time frame.",
             "args": [],
             "type": {
               "kind": "OBJECT",
@@ -74189,7 +74189,7 @@
           },
           {
             "name": "restrictedContributionsCount",
-            "description": "A count of contributions made by the user that the viewer cannot access. Only non-zero when the user has chosen to share their private contribution counts.",
+            "description": "A count of contributions made by the user that the viewer cannot access. Only\nnon-zero when the user has chosen to share their private contribution counts.",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -74723,7 +74723,7 @@
           },
           {
             "name": "totalCount",
-            "description": "Identifies the total count of commits across days and repositories in the connection.\n",
+            "description": "Identifies the total count of commits across days and repositories in the connection.",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -74805,7 +74805,7 @@
           },
           {
             "name": "isRestricted",
-            "description": "Whether this contribution is associated with a record you do not have access to. For\nexample, your own 'first issue' contribution may have been made on a repository you can no\nlonger access.\n",
+            "description": "Whether this contribution is associated with a record you do not have access to. For\nexample, your own 'first issue' contribution may have been made on a repository you can no\nlonger access.",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -74885,7 +74885,7 @@
           },
           {
             "name": "user",
-            "description": "The user who made this contribution.\n",
+            "description": "The user who made this contribution.",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -74918,7 +74918,7 @@
         "fields": [
           {
             "name": "isRestricted",
-            "description": "Whether this contribution is associated with a record you do not have access to. For\nexample, your own 'first issue' contribution may have been made on a repository you can no\nlonger access.\n",
+            "description": "Whether this contribution is associated with a record you do not have access to. For\nexample, your own 'first issue' contribution may have been made on a repository you can no\nlonger access.",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -74982,7 +74982,7 @@
           },
           {
             "name": "user",
-            "description": "The user who made this contribution.\n",
+            "description": "The user who made this contribution.",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -75392,7 +75392,7 @@
         "fields": [
           {
             "name": "isRestricted",
-            "description": "Whether this contribution is associated with a record you do not have access to. For\nexample, your own 'first issue' contribution may have been made on a repository you can no\nlonger access.\n",
+            "description": "Whether this contribution is associated with a record you do not have access to. For\nexample, your own 'first issue' contribution may have been made on a repository you can no\nlonger access.",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -75472,7 +75472,7 @@
           },
           {
             "name": "user",
-            "description": "The user who made this contribution.\n",
+            "description": "The user who made this contribution.",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -75505,7 +75505,7 @@
         "fields": [
           {
             "name": "isRestricted",
-            "description": "Whether this contribution is associated with a record you do not have access to. For\nexample, your own 'first issue' contribution may have been made on a repository you can no\nlonger access.\n",
+            "description": "Whether this contribution is associated with a record you do not have access to. For\nexample, your own 'first issue' contribution may have been made on a repository you can no\nlonger access.",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -75569,7 +75569,7 @@
           },
           {
             "name": "user",
-            "description": "The user who made this contribution.\n",
+            "description": "The user who made this contribution.",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -75623,7 +75623,7 @@
         "fields": [
           {
             "name": "isRestricted",
-            "description": "Whether this contribution is associated with a record you do not have access to. For\nexample, your own 'first issue' contribution may have been made on a repository you can no\nlonger access.\n",
+            "description": "Whether this contribution is associated with a record you do not have access to. For\nexample, your own 'first issue' contribution may have been made on a repository you can no\nlonger access.",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -75703,7 +75703,7 @@
           },
           {
             "name": "user",
-            "description": "The user who made this contribution.\n",
+            "description": "The user who made this contribution.",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -75757,7 +75757,7 @@
         "fields": [
           {
             "name": "isRestricted",
-            "description": "Whether this contribution is associated with a record you do not have access to. For\nexample, your own 'first issue' contribution may have been made on a repository you can no\nlonger access.\n",
+            "description": "Whether this contribution is associated with a record you do not have access to. For\nexample, your own 'first issue' contribution may have been made on a repository you can no\nlonger access.",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -75837,7 +75837,7 @@
           },
           {
             "name": "user",
-            "description": "The user who made this contribution.\n",
+            "description": "The user who made this contribution.",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -76103,7 +76103,7 @@
         "fields": [
           {
             "name": "isRestricted",
-            "description": "Whether this contribution is associated with a record you do not have access to. For\nexample, your own 'first issue' contribution may have been made on a repository you can no\nlonger access.\n",
+            "description": "Whether this contribution is associated with a record you do not have access to. For\nexample, your own 'first issue' contribution may have been made on a repository you can no\nlonger access.",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -76167,7 +76167,7 @@
           },
           {
             "name": "user",
-            "description": "The user who made this contribution.\n",
+            "description": "The user who made this contribution.",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -76522,7 +76522,7 @@
         "fields": [
           {
             "name": "isRestricted",
-            "description": "Whether this contribution is associated with a record you do not have access to. For\nexample, your own 'first issue' contribution may have been made on a repository you can no\nlonger access.\n",
+            "description": "Whether this contribution is associated with a record you do not have access to. For\nexample, your own 'first issue' contribution may have been made on a repository you can no\nlonger access.",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -76634,7 +76634,7 @@
           },
           {
             "name": "user",
-            "description": "The user who made this contribution.\n",
+            "description": "The user who made this contribution.",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -77294,7 +77294,7 @@
           },
           {
             "name": "createdAt",
-            "description": "Identifies the date and time when the key was created. Keys created before March 5th, 2014 have inaccurate values. Values will be null for keys not owned by the user.",
+            "description": "Identifies the date and time when the key was created. Keys created before\nMarch 5th, 2014 have inaccurate values. Values will be null for keys not owned by the user.",
             "args": [],
             "type": {
               "kind": "SCALAR",
@@ -77366,7 +77366,7 @@
           },
           {
             "name": "updatedAt",
-            "description": "Identifies the date and time when the key was updated. Keys created before March 5th, 2014 may have inaccurate values. Values will be null for keys not owned by the user.",
+            "description": "Identifies the date and time when the key was updated. Keys created before\nMarch 5th, 2014 may have inaccurate values. Values will be null for keys not\nowned by the user.",
             "args": [],
             "type": {
               "kind": "SCALAR",
@@ -86600,7 +86600,7 @@
           },
           {
             "name": "ADMIN",
-            "description": "Organization administrators have full access and can change several settings, including the names of repositories that belong to the Organization and Owners team membership. In addition, organization admins can delete the organization and all of its repositories.",
+            "description": "Organization administrators have full access and can change several settings,\nincluding the names of repositories that belong to the Organization and Owners\nteam membership. In addition, organization admins can delete the organization\nand all of its repositories.",
             "isDeprecated": false,
             "deprecationReason": null
           },
@@ -86612,13 +86612,13 @@
           },
           {
             "name": "UNAFFILIATED",
-            "description": "An unaffiliated collaborator is a person who is not a member of the Organization and does not have access to any repositories in the Organization.",
+            "description": "An unaffiliated collaborator is a person who is not a member of the\nOrganization and does not have access to any repositories in the Organization.",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
             "name": "OUTSIDE_COLLABORATOR",
-            "description": "An outside collaborator is a person who isn't explicitly a member of the Organization, but who has Read, Write, or Admin permissions to one or more repositories in the organization.",
+            "description": "An outside collaborator is a person who isn't explicitly a member of the\nOrganization, but who has Read, Write, or Admin permissions to one or more\nrepositories in the organization.",
             "isDeprecated": false,
             "deprecationReason": null
           }
@@ -86963,13 +86963,13 @@
         "enumValues": [
           {
             "name": "OUTSIDE_COLLABORATOR",
-            "description": "An outside collaborator is a person who isn't explicitly a member of the Organization, but who has Read, Write, or Admin permissions to one or more repositories in the organization.",
+            "description": "An outside collaborator is a person who isn't explicitly a member of the\nOrganization, but who has Read, Write, or Admin permissions to one or more\nrepositories in the organization.",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
             "name": "UNAFFILIATED",
-            "description": "An unaffiliated collaborator is a person who is not a member of the Organization and does not have access to any repositories in the organization.",
+            "description": "An unaffiliated collaborator is a person who is not a member of the\nOrganization and does not have access to any repositories in the organization.",
             "isDeprecated": false,
             "deprecationReason": null
           },
@@ -100507,7 +100507,7 @@
           },
           {
             "name": "membersCanChangeRepositoryVisibilitySetting",
-            "description": "The setting value for whether organization members with admin permissions on a repository can change repository visibility.",
+            "description": "The setting value for whether organization members with admin permissions on a\nrepository can change repository visibility.",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -104843,7 +104843,7 @@
           },
           {
             "name": "permission",
-            "description": "The permission granted on this repository by this invitation.\n\n**Upcoming Change on 2020-10-01 UTC**\n**Description:** Type for `permission` will change from `RepositoryPermission!` to `String`.\n**Reason:** This field may return additional values\n",
+            "description": "The permission granted on this repository by this invitation.\n\n**Upcoming Change on 2020-10-01 UTC**\n**Description:** Type for `permission` will change from `RepositoryPermission!` to `String`.\n**Reason:** This field may return additional values",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -106050,7 +106050,7 @@
           },
           {
             "name": "isDraft",
-            "description": "Whether this listing is still an editable draft that has not been submitted for review and is not publicly visible in the Marketplace.",
+            "description": "Whether this listing is still an editable draft that has not been submitted\nfor review and is not publicly visible in the Marketplace.",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -106413,7 +106413,7 @@
           },
           {
             "name": "supportUrl",
-            "description": "Either a URL or an email address for support for this listing's app, may return an empty string for listings that do not require a support URL.",
+            "description": "Either a URL or an email address for support for this listing's app, may\nreturn an empty string for listings that do not require a support URL.",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -106521,7 +106521,7 @@
           },
           {
             "name": "viewerCanEditCategories",
-            "description": "Can the current viewer edit the primary and secondary category of this\nMarketplace listing.\n",
+            "description": "Can the current viewer edit the primary and secondary category of this\nMarketplace listing.",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -106553,7 +106553,7 @@
           },
           {
             "name": "viewerCanRedraft",
-            "description": "Can the current viewer return this Marketplace listing to draft state\nso it becomes editable again.\n",
+            "description": "Can the current viewer return this Marketplace listing to draft state\nso it becomes editable again.",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -106569,7 +106569,7 @@
           },
           {
             "name": "viewerCanReject",
-            "description": "Can the current viewer reject this Marketplace listing by returning it to\nan editable draft state or rejecting it entirely.\n",
+            "description": "Can the current viewer reject this Marketplace listing by returning it to\nan editable draft state or rejecting it entirely.",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -106585,7 +106585,7 @@
           },
           {
             "name": "viewerCanRequestApproval",
-            "description": "Can the current viewer request this listing be reviewed for display in\nthe Marketplace as verified.\n",
+            "description": "Can the current viewer request this listing be reviewed for display in\nthe Marketplace as verified.",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -106601,7 +106601,7 @@
           },
           {
             "name": "viewerHasPurchased",
-            "description": "Indicates whether the current user has an active subscription to this Marketplace listing.\n",
+            "description": "Indicates whether the current user has an active subscription to this Marketplace listing.",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -106617,7 +106617,7 @@
           },
           {
             "name": "viewerHasPurchasedForAllOrganizations",
-            "description": "Indicates if the current user has purchased a subscription to this Marketplace listing\nfor all of the organizations the user owns.\n",
+            "description": "Indicates if the current user has purchased a subscription to this Marketplace listing\nfor all of the organizations the user owns.",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -106633,7 +106633,7 @@
           },
           {
             "name": "viewerIsListingAdmin",
-            "description": "Does the current viewer role allow them to administer this Marketplace listing.\n",
+            "description": "Does the current viewer role allow them to administer this Marketplace listing.",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -110035,7 +110035,7 @@
           },
           {
             "name": "organizationId",
-            "description": "The ID of the organization whose members will be allowed to see the status. If omitted, the status will be publicly visible.",
+            "description": "The ID of the organization whose members will be allowed to see the status. If\nomitted, the status will be publicly visible.",
             "type": {
               "kind": "SCALAR",
               "name": "ID",
@@ -110401,7 +110401,7 @@
           },
           {
             "name": "includeAllBranches",
-            "description": "Whether to copy all branches from the template to the new repository. Defaults to copying only the default branch of the template.",
+            "description": "Whether to copy all branches from the template to the new repository. Defaults\nto copying only the default branch of the template.",
             "type": {
               "kind": "SCALAR",
               "name": "Boolean",
@@ -112174,7 +112174,7 @@
           },
           {
             "name": "baseRefName",
-            "description": "The name of the branch you want your changes pulled into. This should be an existing branch\non the current repository. You cannot update the base branch on a pull request to point\nto another repository.\n",
+            "description": "The name of the branch you want your changes pulled into. This should be an existing branch\non the current repository. You cannot update the base branch on a pull request to point\nto another repository.",
             "type": {
               "kind": "NON_NULL",
               "name": null,
@@ -112188,7 +112188,7 @@
           },
           {
             "name": "headRefName",
-            "description": "The name of the branch where your changes are implemented. For cross-repository pull requests\nin the same network, namespace `head_ref_name` with a user like this: `username:branch`.\n",
+            "description": "The name of the branch where your changes are implemented. For cross-repository pull requests\nin the same network, namespace `head_ref_name` with a user like this: `username:branch`.",
             "type": {
               "kind": "NON_NULL",
               "name": null,
@@ -112448,7 +112448,7 @@
           },
           {
             "name": "template",
-            "description": "Whether this repository should be marked as a template such that anyone who can access it can create new repositories with the same files and directory structure.",
+            "description": "Whether this repository should be marked as a template such that anyone who\ncan access it can create new repositories with the same files and directory structure.",
             "type": {
               "kind": "SCALAR",
               "name": "Boolean",
@@ -112488,7 +112488,7 @@
           },
           {
             "name": "teamId",
-            "description": "When an organization is specified as the owner, this ID identifies the team that should be granted access to the new repository.",
+            "description": "When an organization is specified as the owner, this ID identifies the team\nthat should be granted access to the new repository.",
             "type": {
               "kind": "SCALAR",
               "name": "ID",
@@ -112596,7 +112596,7 @@
           },
           {
             "name": "private",
-            "description": "If true, restricts the visiblity of this discussion to team members and organization admins. If false or not specified, allows any organization member to view this discussion.",
+            "description": "If true, restricts the visiblity of this discussion to team members and\norganization admins. If false or not specified, allows any organization member\nto view this discussion.",
             "type": {
               "kind": "SCALAR",
               "name": "Boolean",
@@ -118152,7 +118152,7 @@
           },
           {
             "name": "settingValue",
-            "description": "Value for the members can create repositories setting on the enterprise. This or the granular public/private/internal allowed fields (but not both) must be provided.",
+            "description": "Value for the members can create repositories setting on the enterprise. This\nor the granular public/private/internal allowed fields (but not both) must be provided.",
             "type": {
               "kind": "ENUM",
               "name": "Github_EnterpriseMembersCanCreateRepositoriesSettingValue",
@@ -120090,7 +120090,7 @@
           },
           {
             "name": "baseRefName",
-            "description": "The name of the branch you want your changes pulled into. This should be an existing branch\non the current repository.\n",
+            "description": "The name of the branch you want your changes pulled into. This should be an existing branch\non the current repository.",
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -120591,7 +120591,7 @@
           },
           {
             "name": "template",
-            "description": "Whether this repository should be marked as a template such that anyone who can access it can create new repositories with the same files and directory structure.",
+            "description": "Whether this repository should be marked as a template such that anyone who\ncan access it can create new repositories with the same files and directory structure.",
             "type": {
               "kind": "SCALAR",
               "name": "Boolean",
@@ -120815,7 +120815,7 @@
           },
           {
             "name": "bodyVersion",
-            "description": "The current version of the body content. If provided, this update operation will be rejected if the given version does not match the latest version on the server.",
+            "description": "The current version of the body content. If provided, this update operation\nwill be rejected if the given version does not match the latest version on the server.",
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -121407,7 +121407,7 @@
           },
           {
             "name": "state",
-            "description": "The state of this signature. `VALID` if signature is valid and verified by GitHub, otherwise represents reason why signature is considered invalid.",
+            "description": "The state of this signature. `VALID` if signature is valid and verified by\nGitHub, otherwise represents reason why signature is considered invalid.",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -121443,6 +121443,128 @@
           {
             "kind": "INTERFACE",
             "name": "Github_GitSignature",
+            "ofType": null
+          }
+        ],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "Github_OrganizationsHovercardContext",
+        "description": "An organization list hovercard context",
+        "fields": [
+          {
+            "name": "message",
+            "description": "A string describing this context",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "octicon",
+            "description": "An octicon to accompany this context",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "relevantOrganizations",
+            "description": "Organizations this user is a member of that are relevant",
+            "args": [
+              {
+                "name": "after",
+                "description": "Returns the elements in the list that come after the specified cursor.",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "before",
+                "description": "Returns the elements in the list that come before the specified cursor.",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "first",
+                "description": "Returns the first _n_ elements from the list.",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "last",
+                "description": "Returns the last _n_ elements from the list.",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "Github_OrganizationConnection",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "totalOrganizationCount",
+            "description": "The total number of organizations this user is in",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [
+          {
+            "kind": "INTERFACE",
+            "name": "Github_HovercardContext",
             "ofType": null
           }
         ],
@@ -121605,128 +121727,6 @@
       },
       {
         "kind": "OBJECT",
-        "name": "Github_OrganizationsHovercardContext",
-        "description": "An organization list hovercard context",
-        "fields": [
-          {
-            "name": "message",
-            "description": "A string describing this context",
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "octicon",
-            "description": "An octicon to accompany this context",
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "relevantOrganizations",
-            "description": "Organizations this user is a member of that are relevant",
-            "args": [
-              {
-                "name": "after",
-                "description": "Returns the elements in the list that come after the specified cursor.",
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "defaultValue": null
-              },
-              {
-                "name": "before",
-                "description": "Returns the elements in the list that come before the specified cursor.",
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "defaultValue": null
-              },
-              {
-                "name": "first",
-                "description": "Returns the first _n_ elements from the list.",
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "Int",
-                  "ofType": null
-                },
-                "defaultValue": null
-              },
-              {
-                "name": "last",
-                "description": "Returns the last _n_ elements from the list.",
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "Int",
-                  "ofType": null
-                },
-                "defaultValue": null
-              }
-            ],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "OBJECT",
-                "name": "Github_OrganizationConnection",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "totalOrganizationCount",
-            "description": "The total number of organizations this user is in",
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "Int",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
-        "inputFields": null,
-        "interfaces": [
-          {
-            "kind": "INTERFACE",
-            "name": "Github_HovercardContext",
-            "ofType": null
-          }
-        ],
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "OBJECT",
         "name": "Github_PackageTag",
         "description": "A version tag contains the mapping between a tag name and a version.",
         "fields": [
@@ -121789,7 +121789,7 @@
       {
         "kind": "OBJECT",
         "name": "Github_ReviewStatusHovercardContext",
-        "description": "A hovercard context with a message describing the current code review state of the pull\nrequest.\n",
+        "description": "A hovercard context with a message describing the current code review state of the pull\nrequest.",
         "fields": [
           {
             "name": "message",
@@ -121930,7 +121930,7 @@
           },
           {
             "name": "state",
-            "description": "The state of this signature. `VALID` if signature is valid and verified by GitHub, otherwise represents reason why signature is considered invalid.",
+            "description": "The state of this signature. `VALID` if signature is valid and verified by\nGitHub, otherwise represents reason why signature is considered invalid.",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -122229,7 +122229,7 @@
           },
           {
             "name": "state",
-            "description": "The state of this signature. `VALID` if signature is valid and verified by GitHub, otherwise represents reason why signature is considered invalid.",
+            "description": "The state of this signature. `VALID` if signature is valid and verified by\nGitHub, otherwise represents reason why signature is considered invalid.",
             "args": [],
             "type": {
               "kind": "NON_NULL",

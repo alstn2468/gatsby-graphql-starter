@@ -966,7 +966,6 @@ type Github {
 
     # Select listings to which user has admin access. If omitted, listings visible to the
     # viewer are returned.
-    #
     viewerCanAdmin: Boolean
 
     # Select listings that can be administered by the specified user.
@@ -977,7 +976,6 @@ type Github {
 
     # Select listings visible to the viewer even if they are not approved. If omitted or
     # false, only approved listings will be returned.
-    #
     allStates: Boolean
 
     # Select the listings with these slugs, if they are visible to the viewer.
@@ -2880,7 +2878,6 @@ type Github_Commit implements Github_Node & Github_GitObject & Github_Subscribab
 
   # The list of authors for this commit based on the git author and the Co-authored-by
   # message trailer. The git author will always be first.
-  #
   authors(
     # Returns the elements in the list that come after the specified cursor.
     after: String
@@ -3406,7 +3403,6 @@ interface Github_Contribution {
   # Whether this contribution is associated with a record you do not have access to. For
   # example, your own 'first issue' contribution may have been made on a repository you can no
   # longer access.
-  #
   isRestricted: Boolean!
 
   # When this contribution was made.
@@ -3419,7 +3415,6 @@ interface Github_Contribution {
   url: Github_URI!
 
   # The user who made this contribution.
-  #
   user: Github_User!
 }
 
@@ -3501,7 +3496,6 @@ type Github_ContributionsCollection {
   contributionYears: [Int!]!
 
   # Determine if this collection's time span ends in the current month.
-  #
   doesEndInCurrentMonth: Boolean!
 
   # The date of the first restricted contribution the user made in this time
@@ -3589,22 +3583,18 @@ type Github_ContributionsCollection {
 
   # When this collection's time range does not include any activity from the user, use this
   # to get a different collection from an earlier time range that does have activity.
-  #
   mostRecentCollectionWithActivity: Github_ContributionsCollection
 
   # Returns a different contributions collection from an earlier time range than this one
   # that does not have any contributions.
-  #
   mostRecentCollectionWithoutActivity: Github_ContributionsCollection
 
   # The issue the user opened on GitHub that received the most comments in the specified
   # time frame.
-  #
   popularIssueContribution: Github_CreatedIssueContribution
 
   # The pull request the user opened on GitHub that received the most comments in the
   # specified time frame.
-  #
   popularPullRequestContribution: Github_CreatedPullRequestContribution
 
   # Pull request contributions made by the user.
@@ -3949,7 +3939,6 @@ type Github_CreatedCommitContribution implements Github_Contribution {
   # Whether this contribution is associated with a record you do not have access to. For
   # example, your own 'first issue' contribution may have been made on a repository you can no
   # longer access.
-  #
   isRestricted: Boolean!
 
   # When this contribution was made.
@@ -3965,7 +3954,6 @@ type Github_CreatedCommitContribution implements Github_Contribution {
   url: Github_URI!
 
   # The user who made this contribution.
-  #
   user: Github_User!
 }
 
@@ -3981,7 +3969,6 @@ type Github_CreatedCommitContributionConnection {
   pageInfo: Github_PageInfo!
 
   # Identifies the total count of commits across days and repositories in the connection.
-  #
   totalCount: Int!
 }
 
@@ -3999,7 +3986,6 @@ type Github_CreatedIssueContribution implements Github_Contribution {
   # Whether this contribution is associated with a record you do not have access to. For
   # example, your own 'first issue' contribution may have been made on a repository you can no
   # longer access.
-  #
   isRestricted: Boolean!
 
   # The issue that was opened.
@@ -4015,7 +4001,6 @@ type Github_CreatedIssueContribution implements Github_Contribution {
   url: Github_URI!
 
   # The user who made this contribution.
-  #
   user: Github_User!
 }
 
@@ -4051,7 +4036,6 @@ type Github_CreatedPullRequestContribution implements Github_Contribution {
   # Whether this contribution is associated with a record you do not have access to. For
   # example, your own 'first issue' contribution may have been made on a repository you can no
   # longer access.
-  #
   isRestricted: Boolean!
 
   # When this contribution was made.
@@ -4067,7 +4051,6 @@ type Github_CreatedPullRequestContribution implements Github_Contribution {
   url: Github_URI!
 
   # The user who made this contribution.
-  #
   user: Github_User!
 }
 
@@ -4103,7 +4086,6 @@ type Github_CreatedPullRequestReviewContribution implements Github_Contribution 
   # Whether this contribution is associated with a record you do not have access to. For
   # example, your own 'first issue' contribution may have been made on a repository you can no
   # longer access.
-  #
   isRestricted: Boolean!
 
   # When this contribution was made.
@@ -4125,7 +4107,6 @@ type Github_CreatedPullRequestReviewContribution implements Github_Contribution 
   url: Github_URI!
 
   # The user who made this contribution.
-  #
   user: Github_User!
 }
 
@@ -4158,7 +4139,6 @@ type Github_CreatedRepositoryContribution implements Github_Contribution {
   # Whether this contribution is associated with a record you do not have access to. For
   # example, your own 'first issue' contribution may have been made on a repository you can no
   # longer access.
-  #
   isRestricted: Boolean!
 
   # When this contribution was made.
@@ -4174,7 +4154,6 @@ type Github_CreatedRepositoryContribution implements Github_Contribution {
   url: Github_URI!
 
   # The user who made this contribution.
-  #
   user: Github_User!
 }
 
@@ -4342,12 +4321,10 @@ input Github_CreatePullRequestInput {
   # The name of the branch you want your changes pulled into. This should be an existing branch
   # on the current repository. You cannot update the base branch on a pull request to point
   # to another repository.
-  #
   baseRefName: String!
 
   # The name of the branch where your changes are implemented. For cross-repository pull requests
   # in the same network, namespace `head_ref_name` with a user like this: `username:branch`.
-  #
   headRefName: String!
 
   # The title of the pull request.
@@ -7043,7 +7020,6 @@ type Github_Gist implements Github_Node & Github_Starrable & Github_UniformResou
   resourcePath: Github_URI!
 
   # Returns a count of how many stargazers there are on this object
-  #
   stargazerCount: Int!
 
   # A list of users who have starred this starrable.
@@ -7979,7 +7955,6 @@ type Github_IssueComment implements Github_Node & Github_Comment & Github_Deleta
 
   # Returns the pull request associated with the comment, if this comment was made on a
   # pull request.
-  #
   pullRequest: Github_PullRequest
 
   # A list of reactions grouped by content left on the subject.
@@ -8363,7 +8338,6 @@ type Github_JoinedGitHubContribution implements Github_Contribution {
   # Whether this contribution is associated with a record you do not have access to. For
   # example, your own 'first issue' contribution may have been made on a repository you can no
   # longer access.
-  #
   isRestricted: Boolean!
 
   # When this contribution was made.
@@ -8376,7 +8350,6 @@ type Github_JoinedGitHubContribution implements Github_Contribution {
   url: Github_URI!
 
   # The user who made this contribution.
-  #
   user: Github_User!
 }
 
@@ -8971,7 +8944,6 @@ type Github_MarketplaceListing implements Github_Node {
 
   # Can the current viewer edit the primary and secondary category of this
   # Marketplace listing.
-  #
   viewerCanEditCategories: Boolean!
 
   # Can the current viewer edit the plans for this Marketplace listing.
@@ -8979,30 +8951,24 @@ type Github_MarketplaceListing implements Github_Node {
 
   # Can the current viewer return this Marketplace listing to draft state
   # so it becomes editable again.
-  #
   viewerCanRedraft: Boolean!
 
   # Can the current viewer reject this Marketplace listing by returning it to
   # an editable draft state or rejecting it entirely.
-  #
   viewerCanReject: Boolean!
 
   # Can the current viewer request this listing be reviewed for display in
   # the Marketplace as verified.
-  #
   viewerCanRequestApproval: Boolean!
 
   # Indicates whether the current user has an active subscription to this Marketplace listing.
-  #
   viewerHasPurchased: Boolean!
 
   # Indicates if the current user has purchased a subscription to this Marketplace listing
   # for all of the organizations the user owns.
-  #
   viewerHasPurchasedForAllOrganizations: Boolean!
 
   # Does the current viewer role allow them to administer this Marketplace listing.
-  #
   viewerIsListingAdmin: Boolean!
 }
 
@@ -13084,7 +13050,6 @@ type Github_ProjectCard implements Github_Node {
   # project column at a time. The column field will be null if the card is created
   # in a pending state and has yet to be associated with a column. Once cards are
   # associated with a column, they will not become pending in the future.
-  #
   column: Github_ProjectColumn
 
   # The card content item
@@ -17773,7 +17738,6 @@ type Github_Repository implements Github_Node & Github_ProjectOwner & Github_Pac
   sshUrl: Github_GitSSHRemote!
 
   # Returns a count of how many stargazers there are on this object
-  #
   stargazerCount: Int!
 
   # A list of users who have starred this starrable.
@@ -17940,7 +17904,6 @@ type Github_RepositoryCollaboratorEdge {
   # **Upcoming Change on 2020-10-01 UTC**
   # **Description:** Type for `permission` will change from `RepositoryPermission!` to `String`.
   # **Reason:** This field may return additional values
-  #
   permission: Github_RepositoryPermission!
 
   # A list of sources for the user's access to the repository.
@@ -18114,7 +18077,6 @@ type Github_RepositoryInvitation implements Github_Node {
   # **Upcoming Change on 2020-10-01 UTC**
   # **Description:** Type for `permission` will change from `RepositoryPermission!` to `String`.
   # **Reason:** This field may return additional values
-  #
   permission: Github_RepositoryPermission!
 
   # The Repository the user is invited to.
@@ -18629,7 +18591,6 @@ type Github_RestrictedContribution implements Github_Contribution {
   # Whether this contribution is associated with a record you do not have access to. For
   # example, your own 'first issue' contribution may have been made on a repository you can no
   # longer access.
-  #
   isRestricted: Boolean!
 
   # When this contribution was made.
@@ -18642,7 +18603,6 @@ type Github_RestrictedContribution implements Github_Contribution {
   url: Github_URI!
 
   # The user who made this contribution.
-  #
   user: Github_User!
 }
 
@@ -18794,7 +18754,6 @@ type Github_ReviewRequestRemovedEvent implements Github_Node {
 
 # A hovercard context with a message describing the current code review state of the pull
 # request.
-#
 type Github_ReviewStatusHovercardContext implements Github_HovercardContext {
   # A string describing this context
   message: String!
@@ -19165,7 +19124,6 @@ type Github_SecurityVulnerability {
   # + `< 0.1.11` denotes a version range up to, but excluding, the specified version
   # + `>= 4.3.0, < 4.3.5` denotes a version range with a known minimum and maximum version.
   # + `>= 0.0.1` denotes a version range with a known minimum, but no known maximum
-  #
   vulnerableVersionRange: String!
 }
 
@@ -19572,7 +19530,6 @@ interface Github_Starrable {
   id: ID!
 
   # Returns a count of how many stargazers there are on this object
-  #
   stargazerCount: Int!
 
   # A list of users who have starred this starrable.
@@ -21050,7 +21007,6 @@ type Github_TeamRepositoryEdge {
   # **Upcoming Change on 2020-10-01 UTC**
   # **Description:** Type for `permission` will change from `RepositoryPermission!` to `String`.
   # **Reason:** This field may return additional values
-  #
   permission: Github_RepositoryPermission!
 }
 
@@ -21126,14 +21082,12 @@ type Github_Topic implements Github_Node & Github_Starrable {
 
   # A list of related topics, including aliases of this topic, sorted with the most relevant
   # first. Returns up to 10 Topics.
-  #
   relatedTopics(
     # How many topics to return.
     first: Int = 3
   ): [Github_Topic!]!
 
   # Returns a count of how many stargazers there are on this object
-  #
   stargazerCount: Int!
 
   # A list of users who have starred this starrable.
@@ -22321,7 +22275,6 @@ input Github_UpdatePullRequestInput {
 
   # The name of the branch you want your changes pulled into. This should be an existing branch
   # on the current repository.
-  #
   baseRefName: String
 
   # The title of the pull request.
@@ -23129,7 +23082,6 @@ type Github_User implements Github_Node & Github_Actor & Github_PackageOwner & G
   status: Github_UserStatus
 
   # Repositories the user has contributed to, ordered by contribution rank, plus repositories the user has created
-  #
   topRepositories(
     # Returns the elements in the list that come after the specified cursor.
     after: String
